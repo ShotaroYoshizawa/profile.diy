@@ -60,7 +60,7 @@ function init1() {
     function animate() {
         requestAnimationFrame(animate);
         // 回転
-        model.rotation.y += 0.01;
+        model.rotation.y += 0.005;
         renderer.render(scene, camera);
     }
 
@@ -128,7 +128,7 @@ function init2() {
     function animate() {
         requestAnimationFrame(animate);
         // 回転
-        model.rotation.y += 0.01;
+        model.rotation.y += 0.005;
         renderer.render(scene, camera);
     }
 
@@ -196,7 +196,7 @@ function init3() {
     function animate() {
         requestAnimationFrame(animate);
         // 回転
-        model.rotation.y += 0.01;
+        model.rotation.y += 0.005;
         renderer.render(scene, camera);
     }
 
@@ -265,7 +265,7 @@ function init4() {
     function animate() {
         requestAnimationFrame(animate);
         // 回転
-        model.rotation.y += 0.01;
+        model.rotation.y += 0.005;
         renderer.render(scene, camera);
     }
 
