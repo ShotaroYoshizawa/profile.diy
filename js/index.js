@@ -44,7 +44,7 @@ function init1() {
     let model = null;
     loader.load(
         //3Dモデルファイルのパスを指定
-        'https://rawcdn.githack.com/ShotaroYoshizawa/profile/2570309f0972b4c093c0b9f2c879edc4655a0037/glb/bed3.glb',
+        'https://rawcdn.githack.com/ShotaroYoshizawa/profile.diy/a341dc059db5a26075f94cca17a8726ae55d2c03/glb/bed3.glb',
         function (glb) {
             model = glb.scene;
             //model.name = "model_castle";
@@ -112,7 +112,7 @@ function init2() {
     let model = null;
     loader.load(
         //3Dモデルファイルのパスを指定
-        'https://rawcdn.githack.com/ShotaroYoshizawa/profile/14cbbd7f34f264d2175b2937b581d5439a6db528/glb/bed4.glb',
+        'https://rawcdn.githack.com/ShotaroYoshizawa/profile.diy/a341dc059db5a26075f94cca17a8726ae55d2c03/glb/bed4.glb',
         function (glb) {
             model = glb.scene;
             //model.name = "model_castle";
@@ -180,7 +180,7 @@ function init3() {
     let model = null;
     loader.load(
         //3Dモデルファイルのパスを指定
-        'https://rawcdn.githack.com/ShotaroYoshizawa/profile/9611a53f9ba5fd109c182448b31a523c671c8e48/glb/bed.glb',
+        'https://rawcdn.githack.com/ShotaroYoshizawa/profile.diy/a341dc059db5a26075f94cca17a8726ae55d2c03/glb/bed.glb',
         function (glb) {
             model = glb.scene;
             //model.name = "model_castle";
@@ -249,7 +249,7 @@ function init4() {
     let model = null;
     loader.load(
         //3Dモデルファイルのパスを指定
-        'https://rawcdn.githack.com/ShotaroYoshizawa/profile/9611a53f9ba5fd109c182448b31a523c671c8e48/glb/bed2.glb',
+        'https://rawcdn.githack.com/ShotaroYoshizawa/profile.diy/a341dc059db5a26075f94cca17a8726ae55d2c03/glb/bed2.glb',
         function (glb) {
             model = glb.scene;
             //model.name = "model_castle";
