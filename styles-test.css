@@ -1,0 +1,80 @@
+html,
+body {
+    height: 100%;
+    margin: 0;
+}
+/*
+canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+}
+*/
+.content {
+    color: #000000;
+    justify-content: center;
+    font-size: 32px;
+    width: 100%;
+}
+
+.Intro-title {
+    width: 100%;
+    margin: 0 auto;
+    position: relative;
+}
+
+.Intro-title h3 {
+    width: 100%;
+    float: left;
+    color: gray;
+    font-size: 30px;
+    background-color: #f4f4f4;
+    padding-left: 30px;
+    padding-right: 30px;
+    margin: 0;
+}
+
+.Canvas{
+    width: 100%;
+    position: relative;
+}
+
+
+/*↓スクロール系
+#percent,
+#scroll {
+    position: fixed;
+    top: 0;
+    left: 0;
+    font-size: 30px;
+    z-index: 1;
+}
+
+#scroll {
+    top: 40px;
+    color: #676767;
+}
+*/
+
+/*
+.content1 {
+    background: rgba(255, 0, 0, 0.2);
+}
+
+.content2 {
+    background: rgba(0, 255, 0, 0.2);
+}
+
+.content3 {
+    background: rgba(0, 0, 255, 0.2);
+}
+
+.content4 {
+    background: rgba(0, 0, 0, 0.2);
+}
+*/
+
+/*↑スクロール系*/
