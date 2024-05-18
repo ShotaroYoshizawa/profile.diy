@@ -115,7 +115,7 @@ function init2() {
     let model = null;
     loader.load(
         //3Dモデルファイルのパスを指定 モデル：購入素材
-        'https://rawcdn.githack.com/ShotaroYoshizawa/profile.diy/9c3cac8dfe94757630ec477de14923915a1fb95d/glb/bed5.glb',
+        'https://rawcdn.githack.com/ShotaroYoshizawa/profile.diy/d6b142285eb354422b035b373a951065983810f4/glb/bed5.1.glb',
         function (glb) {
             model = glb.scene;
             //model.name = "model_castle";
