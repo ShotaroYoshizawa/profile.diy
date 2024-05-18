@@ -110,8 +110,7 @@ section {
     bottom: 0%;
     left: 50%;
     transform: translate(-50%, 0%);
-    padding: 0;
-    margin-bottom: 20px;
+    padding: 0 0 20px 0;
     background-color: rgba(255, 255, 255, 0.5);
 }
 
@@ -184,6 +183,11 @@ section {
 
 .blank {
     height: 100vh;
+}
+
+.blank-white {
+    height: 100vh;
+    background-color: rgba(255, 255, 255, 0.5);
 }
 
 .navi p {
