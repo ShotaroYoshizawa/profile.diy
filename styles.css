@@ -339,7 +339,6 @@ li.list {
 
 
 /*aboutの画像スライド↓*/
-
 #changePic {
     animation: imgfade 8s infinite;
     opacity: 0;

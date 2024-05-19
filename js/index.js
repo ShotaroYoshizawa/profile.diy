@@ -9,7 +9,6 @@ const fov = 30;
 const fovRad = (fov / 2) * (Math.PI / 180); // 視野角をラジアンに変換
 let distance = (window.innerHeight / 2) / Math.tan(fovRad); // カメラ距離を求める
 
-
 function init1() {
     // レンダラーを作成
     const canvasElement = document.querySelector('#myCanvas1');
