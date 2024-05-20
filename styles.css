@@ -51,7 +51,8 @@ section {
 }
 
 .Intro-tab {
-    background-color:  rgba(255, 255, 255, 0.7);;
+    background-color: rgba(255, 255, 255, 0.8);
+    ;
     padding: 20px 0;
 }
 
@@ -75,10 +76,6 @@ section {
     margin: 0 auto;
     padding: 0;
     z-index: -10;
-}
-
-.blank {
-    height: 100vh;
 }
 
 .top-title {
@@ -111,7 +108,6 @@ section {
     left: 50%;
     transform: translate(-50%, 0%);
     padding: 0 0 20px 0;
-    background-color: rgba(255, 255, 255, 0.7);
 }
 
 .top-sub p {
@@ -120,12 +116,17 @@ section {
 }
 
 .blink {
-	animation: blinking 2s ease-in-out infinite alternate;
+    animation: blinking 2s ease-in-out infinite alternate;
 }
- 
+
 @keyframes blinking {
-	0% {opacity: 0;}
-	100% {opacity: 1;}
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
 }
 
 .intro-title {
@@ -135,17 +136,19 @@ section {
 .Intro-title h3 {
     text-align: left;
     padding-left: 30px;
-    padding-right: 30px;
+    padding-right: 0px;
     color: gray;
+    background-color: rgba(255, 255, 255, 0.8);
     font-size: 30px;
-    padding-top: 180px;
-    margin-top: -180px;
+    padding-top: 0px;
+    margin-top: 0px;
     margin-bottom: 0;
 }
 
 @media(min-width:751px) {
     .Intro-title h3 {
         float: left;
+        padding-right: 30px;
     }
 }
 
@@ -153,7 +156,7 @@ section {
     padding: 8px 0 5px 30px;
     margin: 0 auto 0 0;
     text-align: left;
-    background-color: rgba(255, 255, 255, 0.5);
+    background-color: rgba(255, 255, 255, 0.8);
     border-bottom: 2px solid gray;
 }
 
@@ -169,7 +172,7 @@ section {
 
 .Introduction {
     padding: 0;
-    margin:0 auto;
+    margin: 0 auto;
 }
 
 .Introduction a {
@@ -177,7 +180,7 @@ section {
     color: black;
 }
 
-.Introduction p{
+.Introduction p {
     margin: 10px;
 }
 
@@ -187,7 +190,13 @@ section {
 
 .blank-white {
     height: 100vh;
-    background-color: rgba(255, 255, 255, 0.7);
+    background-color: rgba(255, 255, 255, 0.8);
+}
+
+.blank-gray {
+    height: 2px;
+    width: 100%;
+    background-color: gray;
 }
 
 .navi p {
