@@ -1,3 +1,4 @@
+window.addEventListener("DOMContentLoaded", init0);
 window.addEventListener("DOMContentLoaded", init1);
 window.addEventListener("DOMContentLoaded", init2);
 window.addEventListener("DOMContentLoaded", init3);
@@ -9,12 +10,14 @@ const fov = 30;
 const fovRad = (fov / 2) * (Math.PI / 180); // 視野角をラジアンに変換
 let distance = (window.innerHeight / 2) / Math.tan(fovRad); // カメラ距離を求める
 
-function init1() {
+
+function init0() {
     // レンダラーを作成
-    const canvasElement = document.querySelector('#myCanvas1');
+    const canvasElement = document.querySelector('#myCanvas0');
     const renderer = new THREE.WebGLRenderer({
         antialias: true,
         canvas: canvasElement,
+        alpha: true, // 透過を有効化
     });
 
     // サイズ指定
@@ -23,7 +26,42 @@ function init1() {
 
     // シーンを作成
     const scene = new THREE.Scene();
-    scene.background = new THREE.Color(0xffffff);
+    renderer.setClearColor(0x000000, 0); // 背景色のアルファ値を透過指定
+
+    // カメラを作成
+    const camera = new THREE.PerspectiveCamera(fov, window.innerWidth / window.innerHeight, 0.1, 1000);
+    camera.position.set(40, 30, 40);
+    camera.lookAt(0, 0, 0); // 原点を向くように設定
+
+    // グリッドヘルパーを作成
+    const gridHelper = new THREE.GridHelper(200, 40 ,0xdcdcdc ,0xdcdcdc); // サイズと分割数を設定
+    scene.add(gridHelper);
+
+    // アニメーションループ
+    function animate() {
+        requestAnimationFrame(animate);
+        renderer.render(scene, camera);
+    }
+    animate();
+}
+
+
+function init1() {
+    // レンダラーを作成
+    const canvasElement = document.querySelector('#myCanvas1');
+    const renderer = new THREE.WebGLRenderer({
+        antialias: true,
+        canvas: canvasElement,
+        alpha: true, // 透過を有効化
+    });
+
+    // サイズ指定
+    renderer.setPixelRatio(window.devicePixelRatio);
+    renderer.setSize(window.innerWidth, window.innerHeight);
+
+    // シーンを作成
+    const scene = new THREE.Scene();
+    renderer.setClearColor(0x000000, 0); // 背景色のアルファ値を透過指定
 
     // 環境光源を作成
     const ambientLight = new THREE.AmbientLight(0xffffff);
@@ -38,7 +76,7 @@ function init1() {
 
     // カメラを作成
     const camera = new THREE.PerspectiveCamera(fov, window.innerWidth / window.innerHeight, 0.1, 1000);
-    camera.position.set(6, 4, distance / 10000 * 4);
+    camera.position.set(6, 3, distance / 10000 * 4);
     camera.lookAt(scene.position);
 
     // 3Dモデルの読み込み
@@ -75,8 +113,6 @@ function init1() {
     }
 }
 
-
-
 function init2() {
     // レンダラーを作成
     const canvasElement = document.querySelector('#myCanvas2');
@@ -91,7 +127,7 @@ function init2() {
 
     // シーンを作成
     const scene = new THREE.Scene();
-    scene.background = new THREE.Color(0xffffff);
+    renderer.setClearColor(0x000000, 0); // 背景色のアルファ値を透過指定
 
     // 環境光源を作成
     const ambientLight = new THREE.AmbientLight(0xffffff);
@@ -106,7 +142,7 @@ function init2() {
 
     // カメラを作成
     const camera = new THREE.PerspectiveCamera(fov, window.innerWidth / window.innerHeight, 0.1, 1000);
-    camera.position.set(6, 4, distance / 10000 * 4);
+    camera.position.set(6, 3, distance / 10000 * 4);
     camera.lookAt(scene.position);
 
     // 3Dモデルの読み込み
@@ -159,7 +195,7 @@ function init3() {
 
     // シーンを作成
     const scene = new THREE.Scene();
-    scene.background = new THREE.Color(0xffffff);
+    renderer.setClearColor(0x000000, 0); // 背景色のアルファ値を透過指定
 
     // 環境光源を作成
     const ambientLight = new THREE.AmbientLight(0xffffff);
@@ -174,7 +210,7 @@ function init3() {
 
     // カメラを作成
     const camera = new THREE.PerspectiveCamera(fov, window.innerWidth / window.innerHeight, 0.1, 1000);
-    camera.position.set(6, 4, distance / 10000 * 4);
+    camera.position.set(6, 3, distance / 10000 * 4);
     camera.lookAt(scene.position);
 
     // 3Dモデルの読み込み
@@ -228,7 +264,7 @@ function init4() {
 
     // シーンを作成
     const scene = new THREE.Scene();
-    scene.background = new THREE.Color(0xffffff);
+    renderer.setClearColor(0x000000, 0); // 背景色のアルファ値を透過指定
 
     // 環境光源を作成
     const ambientLight = new THREE.AmbientLight(0xffffff);
@@ -243,7 +279,7 @@ function init4() {
 
     // カメラを作成
     const camera = new THREE.PerspectiveCamera(fov, window.innerWidth / window.innerHeight, 0.1, 1000);
-    camera.position.set(6, 4, distance / 10000 * 4);
+    camera.position.set(6, 3, distance / 10000 * 4);
     camera.lookAt(scene.position);
 
     // 3Dモデルの読み込み
@@ -296,7 +332,7 @@ function init5() {
 
     // シーンを作成
     const scene = new THREE.Scene();
-    scene.background = new THREE.Color(0xffffff);
+    renderer.setClearColor(0x000000, 0); // 背景色のアルファ値を透過指定
 
     // 環境光源を作成
     const ambientLight = new THREE.AmbientLight(0xffffff);
@@ -311,7 +347,7 @@ function init5() {
 
     // カメラを作成
     const camera = new THREE.PerspectiveCamera(fov, window.innerWidth / window.innerHeight, 0.1, 1000);
-    camera.position.set(6, 4, distance / 10000 * 4);
+    camera.position.set(6, 3, distance / 10000 * 4);
     camera.lookAt(scene.position);
 
     // 3Dモデルの読み込み
@@ -365,7 +401,7 @@ function init6() {
 
     // シーンを作成
     const scene = new THREE.Scene();
-    scene.background = new THREE.Color(0xffffff);
+    renderer.setClearColor(0x000000, 0); // 背景色のアルファ値を透過指定
 
     // 環境光源を作成
     const ambientLight = new THREE.AmbientLight(0xffffff);
@@ -380,7 +416,7 @@ function init6() {
 
     // カメラを作成
     const camera = new THREE.PerspectiveCamera(fov, window.innerWidth / window.innerHeight, 0.1, 1000);
-    camera.position.set(6, 4, distance / 10000 * 4);
+    camera.position.set(6, 3, distance / 10000 * 4);
     camera.lookAt(scene.position);
 
     // 3Dモデルの読み込み
@@ -424,27 +460,27 @@ function init6() {
 function load_effect() {
     var element = document.getElementsByClassName('load-fade');
     if (!element) return; // 要素がない場合は終了
-  
+
     for (var i = 0; i < element.length; i++) {
-      element[i].classList.add('is-show');
+        element[i].classList.add('is-show');
     }
-  }
-  setTimeout(load_effect, 600); // 600ミリ秒経過後に実行
-  
-  //scroll用
-  function scroll_effect() {
+}
+setTimeout(load_effect, 600); // 600ミリ秒経過後に実行
+
+//scroll用
+function scroll_effect() {
     var element = document.getElementsByClassName('scroll-up');
     if (!element) return;
-  
+
     var scrollY = window.pageYOffset;
     var windowH = window.innerHeight;
     var showTiming = 200; // 要素を表示するタイミング
     for (var i = 0; i < element.length; i++) {
-      var elemClientRect = element[i].getBoundingClientRect();
-      var elemY = scrollY + elemClientRect.top;
-      if (scrollY > elemY - windowH + showTiming) {
-        element[i].classList.add('is-show');
-      }
+        var elemClientRect = element[i].getBoundingClientRect();
+        var elemY = scrollY + elemClientRect.top;
+        if (scrollY > elemY - windowH + showTiming) {
+            element[i].classList.add('is-show');
+        }
     }
-  }
-  window.addEventListener('scroll', scroll_effect); // スクロール時に実行
+}
+window.addEventListener('scroll', scroll_effect); // スクロール時に実行

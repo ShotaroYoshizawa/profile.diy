@@ -15,11 +15,53 @@
 </head>
 
 <body>
-    <header>
-
-    </header>
+    <nav>
+        <input type="checkbox" id="menu-toggle">
+        <label for="menu-toggle" class="menu-btn">
+            <span class="menu-btn__burger"></span>
+        </label>
+        <ul class="nav-menu">
+            <li class="nav-item"><a href="#">Home</a></li>
+            <li class="nav-item">
+                <input type="checkbox" id="about-toggle">
+                <label for="about-toggle" class="submenu-btn">About</label>
+                <ul class="submenu">
+                    <li class="nav-subitem"><a href="#">自己紹介</a></li>
+                    <li class="nav-subitem"><a href="#">経緯(建築)</a></li>
+                    <li class="nav-subitem"><a href="#">経緯(IT)</a></li>
+                </ul>
+            </li>
+            <li class="nav-item">
+                <input type="checkbox" id="skill-toggle">
+                <label for="skill-toggle" class="submenu-btn">Skill</label>
+                <ul class="submenu">
+                    <li class="nav-subitem"><a href="#">使用ツール</a></li>
+                    <li class="nav-subitem"><a href="#">サイト作成経緯</a></li>
+                </ul>
+            </li>
+            <li class="nav-item">
+                <input type="checkbox" id="portfolio-toggle">
+                <label for="portfolio-toggle" class="submenu-btn">Portfolio</label>
+                <ul class="submenu">
+                    <li class="nav-subitem"><a href="#">GASツール</a></li>
+                    <li class="nav-subitem"><a href="#">建築業界</a></li>
+                </ul>
+            </li>
+            <li class="nav-item">
+                <input type="checkbox" id="other-toggle">
+                <label for="other-toggle" class="submenu-btn">Other</label>
+                <ul class="submenu">
+                    <li class="nav-subitem"><a href="#">DIY</a></li>
+                </ul>
+            </li>
+            <li class="nav-item"><a href="#">Contact</a></li>
+        </ul>
+    </nav>
 
     <section id="home">
+        <div class="Canvas type0">
+            <canvas id="myCanvas0"></canvas>
+        </div>
         <div class="container">
             <div class="load-fade">
                 <div class="Introduction">
@@ -34,7 +76,7 @@
                     <div class="top-sub">
                         <p class="blink">↓ scroll ↓</p>
                     </div>
-                    
+
                     <div class="Intro-back">
                         <div class="scroll-up">
                             <div class="Intro-tab">
@@ -60,6 +102,7 @@
                 <div class="Canvas type2">
                     <canvas id="myCanvas2"></canvas>
                 </div>
+
                 <div class="blank50"></div>
                 <div class="Intro-back">
                     <div class="scroll-up">
