@@ -1,0 +1,298 @@
+<!-- portfolio.html -->
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio - Shotaro Yoshizawa</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <header>
+        <div class="container">
+            <h1><a href="index.html">Portfolio - Shotaro Yoshizawa</a></h1>
+            <nav class="gnavi">
+                <ul class="gnavi__lists">
+                    <li class="gnavi__list"><a href="index.html">Home</a>
+                        <!-- ナビをここに追加 -->
+                    </li>
+                    <li class="gnavi__list"><a href="about.html">About</a>
+                        <ul class="dropdown__lists">
+                            <li class="dropdown__list"><a href="about.html#about1">自己紹介</a></li>
+                            <li class="dropdown__list"><a href="about.html#about2">経緯(建築)</a></li>
+                            <li class="dropdown__list"><a href="about.html#about3">経緯(IT)</a></li>
+                        </ul>
+                    </li>
+                    <li class="gnavi__list"><a href="skill.html">Skill</a>
+                        <ul class="dropdown__lists">
+                            <li class="dropdown__list"><a href="skill.html#skill1">使用ツール</a></li>
+                            <li class="dropdown__list"><a href="skill.html#skill2">サイト作成経緯</a></li>
+                        </ul>
+                    </li>
+                    <li class="gnavi__list"><a href="portfolio.html" class="here">Portfolio</a>
+                        <ul class="dropdown__lists">
+                            <li class="dropdown__list"><a href="portfolio.html#portfolio1">GASツール</a></li>
+                            <li class="dropdown__list"><a href="portfolio.html#portfolio2">建築業界</a></li>
+                        </ul>
+                    </li>
+                    <li class="gnavi__list"><a href="other.html">Other</a>
+                        <ul class="dropdown__lists">
+                            <li class="dropdown__list"><a href="other.html#other1">DIY</a></li>
+                        </ul>
+                    </li>
+                    <li class="gnavi__list"><a href="contact.html">Contact</a>
+                        <!-- ナビをここに追加 -->
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section id="portfolio">
+        <div class="container">
+            <div class="sub-subject">
+                <div class="Intro-title">
+                    <h3>Portfolio</h3>
+                    <h4>作業効率化のためにこれまで作ってきたもの</h4>
+                    <img src="picture\back\back1-1.jpg" alt="back1-1">
+                </div>
+            </div>
+
+            <div class="scroll-up">
+                <div class="sub-subject">
+                    <div class="Intro-title">
+                        <h3 id="portfolio1">GAS Tool</h3>
+                        <h4>GASで作成したツール一覧</h4>
+                    </div>
+                    <div class="project-gas">
+                        <h3>Google Apps Script（GAS）とは</h3>
+                        <p>JavaScriptをベースにGoogleが開発・提供しているプログラミング言語のことです。<br>
+                            Googleサービスや外部サービスと連携し、業務効率化ツールなどを作成することが出来ます。</p>
+                    </div>
+                    <div class="content">
+                        <div class="content-list">
+                            <div class="project-gas">
+                                <h3 id="tool1">リストからメールの自動作成</h3>
+                                <div class="project">
+                                    <img src="picture\tool1.png" alt="tool1">
+                                    <div>
+                                        <p>大量のメールを一斉作成するツールを作成しました。</p>
+                                        <p>スプレッドシートに名前やアドレスを貼り付ければ、下書きメールを一斉に作成できます。</p>
+                                        <a href="https://docs.google.com/spreadsheets/d/18x4M8A0A-y8RFz3dRuvH8su-P9WaSgOi2Ir-SNgDt1w/edit?usp=sharing"
+                                            target="_blank">＞＞＞ 公開リンクはこちら</a>
+                                        <details class="details">
+                                            <summary class="details__summary">詳細を開く</summary>
+                                            <div class="details__content">
+                                                <h4>作成理由</h4>
+                                                <ul>
+                                                    <li>大量のメールを作成時間を削減</li>
+                                                    <li>ミスの削減や確認作業の時間短縮</li>
+                                                </ul>
+                                                <h4>ポイント</h4>
+                                                <ul>
+                                                    <li>誰でも使えるような操作性</li>
+                                                    <li>メール件数が増えても操作時間がほどんど変わらない</li>
+                                                </ul>
+                                            </div>
+                                        </details>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="content-list">
+                            <div class="project-gas">
+                                <h3 id="tool2">請求書の自動作成</h3>
+                                <div class="project">
+                                    <img src="picture\tool2.png" alt="tool2">
+                                    <div>
+                                        <p>大量の請求書を一斉作成するツールを作成しました。</p>
+                                        <p>メール作成ツールと組み合わせると、各位に請求書を送るツールを作成することも出来ます。</p>
+                                        <p>リンク公開予定</p>
+                                        <details class="details">
+                                            <summary class="details__summary">詳細を開く</summary>
+                                            <div class="details__content">
+                                                <h4>作成理由</h4>
+                                                <ul>
+                                                    <li>メール作成ツールと同様に作業時間とミスの削減</li>
+                                                    <li>操作手順がメール作成以上に多いので、簡略化させるため</li>
+                                                </ul>
+                                                <h4>ポイント</h4>
+                                                <ul>
+                                                    <li>作成手順を大幅にカット</li>
+                                                    <li>作成した請求書がドライブ内の指定フォルダに保存される</li>
+                                                </ul>
+                                            </div>
+                                        </details>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="content-list">
+                            <div class="project-gas">
+                                <h3 id="tool3">Googleフォームの回答を転記</h3>
+                                <div class="project">
+                                    <img src="picture\tool3.png" alt="tool3">
+                                    <div>
+                                        <p>Googleフォームの回答内容をスプレッドシートに貼り付けます。</p>
+                                        <p>担当者が作業しなくても、すぐに反映可能</p>
+                                        <details class="details">
+                                            <summary class="details__summary">詳細を開く</summary>
+                                            <div class="details__content">
+                                                <h4>作成理由</h4>
+                                                <ul>
+                                                    <li>フォーム回答時間が作業時間と合わなく、いつでも操作可能にするため</li>
+                                                </ul>
+                                                <h4>ポイント</h4>
+                                                <ul>
+                                                    <li>集計するスプレッドシートとは別のシートに貼付</li>
+                                                    <li>フォーム回答後に自動でシートを反映</li>
+                                                </ul>
+                                            </div>
+                                        </details>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="content-list">
+                            <div class="project-gas">
+                                <h3 id="tool4">スプレッドシートにコピペやクリア機能を追加</h3>
+                                <div class="project">
+                                    <img src="picture\tool4.png" alt="tool4">
+                                    <div>
+                                        <p>スプレッドシートの特定範囲内のコピー&ペーストやクリア機能、更新時間の自動記載機能を追加しました。</p>
+                                        <details class="details">
+                                            <summary class="details__summary">詳細を開く</summary>
+                                            <div class="details__content">
+                                                <h4>作成理由</h4>
+                                                <ul>
+                                                    <li>繰り返し行われる単純作業の時間の単純作業によるミスを削減</li>
+                                                    <li>コピペミスにより書式や関数の崩れが多かったため</li>
+                                                </ul>
+                                                <h4>ポイント</h4>
+                                                <ul>
+                                                    <li>コピペミスや書式や関数の崩れが無くなる</li>
+                                                    <li>作業者への注意喚起やミスの確認をする手間が無くなる</li>
+                                                </ul>
+                                            </div>
+                                        </details>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="content-list">
+                            <div class="project-gas">
+                                <h3 id="tool5">宅配物の発送情報を収集</h3>
+                                <div class="project">
+                                    <img src="" alt="tool5">
+                                    <div>
+                                        <p>宅配物の追跡番号を入力し、発送状況の確認が出来ます。</p>
+                                        <p>宅配業者のサイトを見なくても、スプレッドシート上で発送状況が確認可能</p>
+                                        <details class="details">
+                                            <summary class="details__summary">詳細を開く</summary>
+                                            <div class="details__content">
+                                                <h4>作成理由</h4>
+                                                <ul>
+                                                    <li>発送状況サイトを1ページずつ確認する時間を削減</li>
+                                                    <li>担当者以外でも更新可能にするため</li>
+                                                </ul>
+                                                <h4>ポイント</h4>
+                                                <ul>
+                                                    <li>大量の宅配物の発送状況を一斉に確認</li>
+                                                    <li>作業が簡単になるので、更新頻度を増やすことも可能</li>
+                                                </ul>
+                                            </div>
+                                        </details>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="content-list">
+                            <div class="project-gas">
+                                <h3 id="tool6">LINEの天気botの作成</h3>
+                                <div class="project">
+                                    <img src="" alt="tool6">
+                                    <div>
+                                        <p>毎朝天気情報を送るLINEbotを作成しました。（現在改良中）</p>
+                                        <details class="details">
+                                            <summary class="details__summary">詳細を開く</summary>
+                                            <div class="details__content">
+                                                <h4>作成理由</h4>
+                                                <ul>
+                                                    <li>天気や気温の確認をしやすくするため</li>
+                                                    <li>プログラミングスキルの向上のため</li>
+                                                </ul>
+                                                <h4>今後の改良予定ポイント</h4>
+                                                <ul>
+                                                    <li>bot相手に簡単な会話が出来るようにする機能</li>
+                                                    <li>地名を入力したら、その場所の現在の天気をお知らせする機能</li>
+                                                </ul>
+                                            </div>
+                                        </details>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- 追加のプロジェクトをここに追加 -->
+                    </div>
+                </div>
+            </div>
+
+            <div class="scroll-up">
+                <div class="sub-subject">
+                    <div class="Intro-title">
+                        <h3 id="portfolio2">Architecture Project</h3>
+                        <h4>建築業界での仕事内容</h4>
+                    </div>
+
+                    <div class="content">
+                        <div class="project">
+                            <div class="arich">
+                                <h4>打ち合わせ(対面,オンライン)</h4>
+                                <p>設計の方針や詳細について施主や行政、社内で協議</p>
+                                <h4>機器選定(Excel,計算ツールなど)</h4>
+                                <p>必要量を計算し、能力や台数、機種などを決定</p>
+                                <h4>図面作成(AutoCAD,Rebroなど)</h4>
+                                <p>空調・衛生：配管図やダクト図、系統図など</p>
+                                <p>意匠　　　：平面図や断面図、パースなど</p>
+                                <h4>施工監理</h4>
+                                <p>建設現場にて工事状況確認や図面変更の打ち合わせなど</p>
+
+                                <h4>携わった建物</h4>
+                                <ul>
+                                    <li>自動車会社の事務所</li>
+                                    <li>紙製品工場</li>
+                                    <li>オフィスビル</li>
+                                    <li>工業高校の校舎や体育館</li>
+                                    <li>商業施設</li>
+                                    <li>保育施設</li>
+                                    <li>福祉施設　など</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="skill.html">Skill</a></li>
+                    <li><a href="portfolio.html">Portfolio</a></li>
+                    <li><a href="other.html">Other</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+            <p>&copy; 2024 Shotaro Yoshizawa. All Rights Reserved.</p>
+        </div>
+    </footer>
+    <script src="js/portfolio.js"></script>
+</body>
+
+</html>
