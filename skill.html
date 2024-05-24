@@ -11,58 +11,49 @@
 
 <body>
     <header>
-        <div class="container">
-            <h1><a href="index.html">Portfolio - Shotaro Yoshizawa</a></h1>
-            <nav class="gnavi">
-                <ul class="gnavi__lists">
-                    <li class="gnavi__list"><a href="index.html">Home</a>
-                        <!-- ナビをここに追加 -->
-                    </li>
-                    <li class="gnavi__list"><a href="about.html">About</a>
-                        <ul class="dropdown__lists">
-                            <li class="dropdown__list"><a href="about.html#about1">自己紹介</a></li>
-                            <li class="dropdown__list"><a href="about.html#about2">経緯(建築)</a></li>
-                            <li class="dropdown__list"><a href="about.html#about3">経緯(IT)</a></li>
-                        </ul>
-                    </li>
-                    <li class="gnavi__list"><a href="skill.html" class="here">Skill</a>
-                        <ul class="dropdown__lists">
-                            <li class="dropdown__list"><a href="skill.html#skill1">使用ツール</a></li>
-                            <li class="dropdown__list"><a href="skill.html#skill2">サイト作成経緯</a></li>
-                        </ul>
-                    </li>
-                    <li class="gnavi__list"><a href="portfolio.html">Portfolio</a>
-                        <ul class="dropdown__lists">
-                            <li class="dropdown__list"><a href="portfolio.html#portfolio1">GASツール</a></li>
-                            <li class="dropdown__list"><a href="portfolio.html#portfolio2">建築業界</a></li>
-                        </ul>
-                    </li>
-                    <li class="gnavi__list"><a href="other.html">Other</a>
-                        <ul class="dropdown__lists">
-                            <li class="dropdown__list"><a href="other.html#other1">DIY</a></li>
-                        </ul>
-                    </li>
-                    <li class="gnavi__list"><a href="contact.html">Contact</a>
-                        <!-- ナビをここに追加 -->
-                    </li>
-                </ul>
-            </nav>
+        <div class="load-fade">
+            <div class="container">
+                <a href="index.html"><h1>Portfolio - Shotaro Yoshizawa</h1></a>
+            </div>
         </div>
     </header>
+    <nav>
+        <input type="checkbox" id="menu-toggle">
+        <label for="menu-toggle" class="menu-btn">
+            <span class="menu-btn__burger"></span>
+        </label>
+        <ul class="nav-menu">
+            <li class="nav-item"><a href="index.html">Home</a></li>
+            <li class="nav-item"><a href="about.html">About</a></li>
+            <li class="nav-item"><a href="skill.html">Skill</a></li>
+            <li class="nav-item"><a href="portfolio.html">Portfolio</a></li>
+            <li class="nav-item"><a href="other.html">Other</a></li>
+            <li class="nav-item"><a href="contact.html">Contact</a></li>
+
+            <!-- submenuバージョン
+            <<li class="nav-item">
+                <input type="checkbox" id="about-toggle">
+                <label for="about-toggle" class="submenu-btn">About</label>
+                <ul class="submenu">
+                    <li class="nav-subitem"><a href="about.html">自己紹介</a></li>
+                    <li class="nav-subitem"><a href="about.html#about2">経緯(建築)</a></li>
+                    <li class="nav-subitem"><a href="about.html#about3">経緯(IT)</a></li>
+                </ul>
+            </li>
+            -->
+        </ul>
+    </nav>
 
     <section id="skill">
         <div class="container">
-            <div class="sub-subject">
-                <div class="Intro-title">
+            <div class="load-fade">
+                <div class="page-title">
                     <h3>Skill</h3>
-                    <h4>実践を通して技術を磨いていく</h4>
-                    <img src="picture\back\back4-1.jpg" alt="back4-1">
                 </div>
             </div>
-
             <div class="scroll-up">
                 <div class="sub-subject">
-                    <div class="Intro-title">
+                    <div class="subject-title">
                         <h3 id="skill1">Tool</h3>
                         <h4>使用ツール</h4>
                     </div>
@@ -127,7 +118,7 @@
 
             <div class="scroll-up">
                 <div class="sub-subject">
-                    <div class="Intro-title">
+                    <div class="subject-title">
                         <h3 id="skill2">Process</h3>
                         <h4>Profileサイトの作成経緯</h4>
                     </div>
@@ -212,16 +203,6 @@
 
     <footer>
         <div class="container">
-            <nav>
-                <ul>
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="about.html">About</a></li>
-                    <li><a href="skill.html">Skill</a></li>
-                    <li><a href="portfolio.html">Portfolio</a></li>
-                    <li><a href="other.html">Other</a></li>
-                    <li><a href="contact.html">Contact</a></li>
-                </ul>
-            </nav>
             <p>&copy; 2024 Shotaro Yoshizawa. All Rights Reserved.</p>
         </div>
     </footer>
