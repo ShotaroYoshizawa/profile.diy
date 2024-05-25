@@ -82,13 +82,15 @@ function initCanvasWithModel(canvasSelector, modelUrl) {
 
 //グリッド背景
 function initGridCanvas(canvasSelector) {
+    // レンダラーを作成
     const canvasElement = document.querySelector(canvasSelector);
     const renderer = new THREE.WebGLRenderer({
         antialias: true,
         canvas: canvasElement,
-        alpha: true,
+        alpha: true, // 透過を有効化
     });
 
+    // サイズ指定
     function resizeRenderer() {
         const width = window.innerWidth;
         const height = window.innerHeight;
@@ -97,13 +99,16 @@ function initGridCanvas(canvasSelector) {
         camera.updateProjectionMatrix();
     }
 
+    // シーンを作成
     const scene = new THREE.Scene();
     renderer.setClearColor(0x000000, 0);
 
+    // カメラを作成
     const camera = new THREE.PerspectiveCamera(30, window.innerWidth / window.innerHeight, 0.1, 1000);
     camera.position.set(40, 30, 40);
     camera.lookAt(0, 0, 0);
 
+    //グリッド背景
     const gridHelper = new THREE.GridHelper(200, 40, 0xdcdcdc, 0xdcdcdc);
     scene.add(gridHelper);
 
