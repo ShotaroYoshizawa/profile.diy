@@ -102,7 +102,7 @@ nav {
     right: -100%;
     width: 180px;
     height: auto;
-    background-color: rgba(50, 50, 50, 0.9);;
+    background-color: rgba(50, 50, 50, 0.9);
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -121,8 +121,13 @@ nav {
 }
 
 .nav-item {
-    margin: 10px 0;
+    padding: 5px 5px;
+    margin: 5px 0;
     position: relative;
+}
+
+.nav-item:hover {
+    background-color: rgba(50, 50, 50, 0.9);
 }
 
 .nav-item a,
@@ -254,7 +259,6 @@ section {
 }
 
 .top-sub {
-    width: 100%;
     position: absolute;
     bottom: 0%;
     left: 50%;
@@ -264,8 +268,9 @@ section {
 
 .top-sub p {
     font-size: 20px;
-    padding: 0;
-    margin-top: 10px;
+    padding: 5px 20px;
+    background-color: rgba(230, 230, 230, 0.9);
+    border-radius: 5px;
 }
 
 .blink {
@@ -359,9 +364,9 @@ section {
 
 .navi p {
     text-align: center;
-
-    width: 300px;
-    margin: 0 auto;
+    width: 250px;
+    padding: 5px 0;
+    margin: 10px auto;
 }
 
 .navi p:hover {
