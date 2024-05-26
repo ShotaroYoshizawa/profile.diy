@@ -55,3 +55,19 @@ function btnAction(btnDOM, btnId) {
     }
   })
 }
+
+
+// ボタンの表示を制御する関数
+window.onscroll = function () {
+  var scrollTopButton = document.getElementById("scrollTopButton");
+  if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+    scrollTopButton.style.display = "flex";
+  } else {
+    scrollTopButton.style.display = "none";
+  }
+};
+
+// ページの一番上にスクロールする関数
+function scrollToTop() {
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}

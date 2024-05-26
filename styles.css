@@ -54,6 +54,10 @@ nav {
     z-index: 1000;
 }
 
+.menu-btn:hover {
+    background-color: rgba(50, 50, 50, 0.9); /* ホバー時の背景色 */
+}
+
 .menu-btn__burger,
 .menu-btn__burger::before,
 .menu-btn__burger::after {
@@ -165,6 +169,41 @@ nav {
 }
 */
 /*ハンバーガーメニュー↑*/
+
+
+/* トップに戻るボタンのスタイル↓ */
+#scrollTopButton {
+    display: none; /* 最初は非表示 */
+    position: fixed; /* ページの位置に固定 */
+    bottom: 75px; /* ハンバーガーメニューの上に配置 */
+    right: 20px; /* 右から20px */
+    z-index: 999; /* ハンバーガーメニューの下に表示 */
+    width: 45px; /* ハンバーガーメニューと同じ大きさ */
+    height: 45px; /* ハンバーガーメニューと同じ大きさ */
+    background-color: rgba(50, 50, 50, 0.7); /* 背景色 */
+    border: none; /* 枠線なし */
+    outline: none; /* アウトラインなし */
+    cursor: pointer; /* カーソルの形状 */
+    border-radius: 5px; /* 角を丸く */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#scrollTopButton:hover {
+    background-color: rgba(50, 50, 50, 0.9); /* ホバー時の背景色 */
+}
+
+/* 上向きのくの字 */
+.caret-up {
+    width: 15px;
+    height: 15px;
+    border-left: 5px solid white;
+    border-bottom: 5px solid white;
+    transform: rotate(135deg);
+    margin-top: 10px;
+}
+/* トップに戻るボタンのスタイル↑ */
 
 /*load用↓*/
 .load-fade {
@@ -316,8 +355,8 @@ section {
 }
 
 .Intro-title img {
-    height: 240px;
-    width: 90%;
+    max-height: 300px;
+    max-width: 90%;
     margin: 20px;
     object-fit: cover;
     object-position: auto;
