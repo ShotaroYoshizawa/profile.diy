@@ -379,7 +379,7 @@ section {
 }
 
 .Intro-back {
-    height: 120vh;
+    min-height: 120vh;
     padding: 20px 0;
     margin: 20px 0;
     background-color: rgba(230, 230, 230, 0.9);

@@ -7,16 +7,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>About - Shotaro Yoshizawa</title>
     <link rel="stylesheet" href="styles.css">
+    <!-- three.jsを読み込む -->
+    <script src="https://unpkg.com/three@0.147.0/build/three.min.js"></script>
+    <script src="https://unpkg.com/three@0.147.0/examples/js/controls/OrbitControls.js"></script>
+    <script src="https://unpkg.com/three@0.142.0/examples/js/loaders/GLTFLoader.js"></script>
+    <script src="js/about.js"></script>
 </head>
 
 <body>
     <header>
-        <div class="load-fade">
-            <div class="container">
-                <a href="index.html"><h1>Portfolio - Shotaro Yoshizawa</h1></a>
-            </div>
-        </div>
+
     </header>
+
     <nav>
         <input type="checkbox" id="menu-toggle">
         <label for="menu-toggle" class="menu-btn">
@@ -48,14 +50,23 @@
     </nav>
 
     <section id="about">
+        <div class="Canvas type0">
+            <canvas id="myCanvas0"></canvas>
+        </div>
         <div class="container">
-            <div class="load-fade">
-                <div class="page-title">
+            <div class="Introduction">
+                <div class="Canvas type1">
+                    <canvas id="myCanvas1"></canvas>
+                </div>
+                <div class="blank"></div>
+                <div class="top-title">
                     <h3>About</h3>
                 </div>
-            </div>
-            <div class="scroll-up">
-                <div class="sub-subject">
+                <div class="top-sub">
+                    <p class="blink">↓ scroll ↓</p>
+                </div>
+
+                <div class="Intro-back">
                     <div class="subject-title">
                         <h3 id="about1">Profile</h3>
                         <h4>自己紹介</h4>
@@ -64,7 +75,7 @@
                     <p>吉澤彰太郎<br>
                         Shotaro Yoshizawa</p>
                     <h3>- 生年月日 -</h3>
-                    <p>1994年2月2日</p>    
+                    <p>1994年2月2日</p>
                     <h3>- 現在地 -</h3>
                     <p>大阪府大阪市北区大淀南</p>
                     <h3>- 出身地 -</h3>
@@ -73,8 +84,13 @@
                     <p>地元の風景（宇都宮市）</p>
                 </div>
             </div>
-            <div class="scroll-up">
-                <div class="sub-subject">
+
+            <div class="Introduction">
+                <div class="Canvas type2">
+                    <canvas id="myCanvas2"></canvas>
+                </div>
+                <div class="blank"></div>
+                <div class="Intro-back">
                     <div class="subject-title">
                         <h3 id="about2">Architecture Career</h3>
                         <h4>建築関連の経歴</h4>
@@ -119,8 +135,12 @@
                 </div>
             </div>
 
-            <div class="scroll-up">
-                <div class="sub-subject">
+            <div class="Introduction">
+                <div class="Canvas type3">
+                    <canvas id="myCanvas3"></canvas>
+                </div>
+                <div class="blank"></div>
+                <div class="Intro-back">
                     <div class="subject-title">
                         <h3 id="about3">IT Career</h3>
                         <h4>IT関連の経歴</h4>
@@ -152,7 +172,17 @@
                     <p>現在は幅広い知識と経験を得るために、IT業界で転職活動をしています。</p>
                 </div>
             </div>
-
+            <div class="Introduction">
+                <div class="Canvas type4">
+                    <canvas id="myCanvas4"></canvas>
+                </div>
+                <div class="blank"></div>
+                <div class="Intro-back">
+                    <div class="Intro-title">
+                        <img src="picture\diy\table1.jpg" alt="back3-1">
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
 
@@ -161,7 +191,6 @@
             <p>&copy; 2024 Shotaro Yoshizawa. All Rights Reserved.</p>
         </div>
     </footer>
-    <script src="js/about.js"></script>
 </body>
 
 </html>
