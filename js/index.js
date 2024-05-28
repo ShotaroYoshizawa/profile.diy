@@ -16,6 +16,9 @@ function initCanvasWithModel(canvasSelector, modelUrl) {
         canvas: canvasElement,
         alpha: true, // 透過を有効化
     });
+    renderer.physicallyCorrectLights = true;
+    renderer.outputEncoding = THREE.sRGBEncoding;
+//    renderer.toneMapping = THREE.ACESFilmicToneMapping;
 
     // サイズ指定
     renderer.setPixelRatio(window.devicePixelRatio);
@@ -26,14 +29,14 @@ function initCanvasWithModel(canvasSelector, modelUrl) {
     renderer.setClearColor(0x000000, 0); // 背景色のアルファ値を透過指定
 
     // 環境光源を作成
-    const ambientLight = new THREE.AmbientLight(0xffffff);
-    ambientLight.intensity = 1;
+    const ambientLight = new THREE.AmbientLight(0xffffff, 1.0);
+    ambientLight.intensity = 2;
     scene.add(ambientLight);
 
     // 平行光源を作成
-    const directionalLight = new THREE.DirectionalLight(0xffffff);
-    directionalLight.intensity = 1;
-    directionalLight.position.set(0, 3, 6); // x, y, z の位置を指定
+    const directionalLight = new THREE.DirectionalLight(0xffffff, 1.0);
+    directionalLight.intensity = 3;
+    directionalLight.position.set(0, 4, 8); // x, y, z の位置を指定
     scene.add(directionalLight);
 
     // カメラを作成
@@ -169,3 +172,22 @@ window.onscroll = function () {
 function scrollToTop() {
     window.scrollTo({ top: 0, behavior: 'smooth' });
 }
+
+
+async function loadLatestUpdates() {
+    try {
+        const response = await fetch('skill.html');
+        const text = await response.text();
+        const parser = new DOMParser();
+        const doc = parser.parseFromString(text, 'text/html');
+        const historyItems = doc.querySelectorAll('#history dl');
+        const updatesContainer = document.getElementById('updates');
+        for (let i = 0; i < 3 && i < historyItems.length; i++) {
+            updatesContainer.innerHTML += '<div>' + historyItems[i].innerHTML + '</div>';
+        }
+    } catch (error) {
+        console.error('Error fetching updates:', error);
+    }
+}
+
+window.onload = loadLatestUpdates;

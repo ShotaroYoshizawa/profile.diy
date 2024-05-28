@@ -11,13 +11,10 @@
     <script src="https://unpkg.com/three@0.147.0/build/three.min.js"></script>
     <script src="https://unpkg.com/three@0.147.0/examples/js/controls/OrbitControls.js"></script>
     <script src="https://unpkg.com/three@0.142.0/examples/js/loaders/GLTFLoader.js"></script>
-    <script src="js/about.js"></script>
 </head>
 
 <body>
-    <header>
-
-    </header>
+    <header></header>
 
     <nav>
         <input type="checkbox" id="menu-toggle">
@@ -25,12 +22,12 @@
             <span class="menu-btn__burger"></span>
         </label>
         <ul class="nav-menu">
-            <li class="nav-item"><a href="index.html">Home</a></li>
-            <li class="nav-item"><a href="about.html">About</a></li>
-            <li class="nav-item"><a href="skill.html">Skill</a></li>
-            <li class="nav-item"><a href="portfolio.html">Portfolio</a></li>
-            <li class="nav-item"><a href="other.html">Other</a></li>
-            <li class="nav-item"><a href="contact.html">Contact</a></li>
+            <a href="index.html"><li class="nav-item">Home</li></a>
+            <a href="about.html"><li class="nav-item">About</li></a>
+            <a href="skill.html"><li class="nav-item">Skill</li></a>
+            <a href="portfolio.html"><li class="nav-item">Portfolio</li></a>
+            <a href="other.html"><li class="nav-item">Other</li></a>
+            <a href="contact.html"><li class="nav-item">Contact</li></a>
 
             <!-- submenuバージョン
             <<li class="nav-item">
@@ -54,34 +51,38 @@
             <canvas id="myCanvas0"></canvas>
         </div>
         <div class="container">
-            <div class="Introduction">
-                <div class="Canvas type1">
-                    <canvas id="myCanvas1"></canvas>
-                </div>
-                <div class="blank"></div>
-                <div class="top-title">
-                    <h3>About</h3>
-                </div>
-                <div class="top-sub">
-                    <p class="blink">↓ scroll ↓</p>
-                </div>
-
-                <div class="Intro-back">
-                    <div class="subject-title">
-                        <h3 id="about1">Profile</h3>
-                        <h4>自己紹介</h4>
+            <div class="load-fade">
+                <div class="Introduction">
+                    <div class="Canvas type1">
+                        <canvas id="myCanvas1"></canvas>
                     </div>
-                    <h3>- 氏名 -</h3>
-                    <p>吉澤彰太郎<br>
-                        Shotaro Yoshizawa</p>
-                    <h3>- 生年月日 -</h3>
-                    <p>1994年2月2日</p>
-                    <h3>- 現在地 -</h3>
-                    <p>大阪府大阪市北区大淀南</p>
-                    <h3>- 出身地 -</h3>
-                    <p>栃木県宇都宮市</p>
-                    <img id="changePic" src="picture\tanbo\tanbo1.jpg" alt="画像の切り替え">
-                    <p>地元の風景（宇都宮市）</p>
+                    <div class="blank"></div>
+                    <div class="top-title">
+                        <div class="Intro-title">
+                            <h3>About</h3>
+                            <h4>建築業界からIT業界に</h4>
+                        </div>
+                    </div>
+                    <div class="top-sub">
+                        <p class="blink">↓ scroll ↓</p>
+                    </div>
+                    <div class="Intro-back">
+                        <div class="subject-title">
+                            <h3 id="about1">Profile</h3>
+                            <h4>自己紹介</h4>
+                        </div>
+                        <h3>- 氏名 -</h3>
+                        <p>吉澤彰太郎<br>
+                            Shotaro Yoshizawa</p>
+                        <h3>- 生年月日 -</h3>
+                        <p>1994年2月2日</p>
+                        <h3>- 現在地 -</h3>
+                        <p>大阪府大阪市北区大淀南</p>
+                        <h3>- 出身地 -</h3>
+                        <p>栃木県宇都宮市</p>
+                        <img id="changePic" src="picture\tanbo\tanbo1.jpg" alt="画像の切り替え">
+                        <p>地元の風景（宇都宮市）</p>
+                    </div>
                 </div>
             </div>
 
@@ -91,47 +92,49 @@
                 </div>
                 <div class="blank"></div>
                 <div class="Intro-back">
-                    <div class="subject-title">
-                        <h3 id="about2">Architecture Career</h3>
-                        <h4>建築関連の経歴</h4>
-                    </div>
-                    <h3>- 学歴 -</h3>
-                    <div class="subject">
-                        <div class="history">
-                            <dl>
-                                <dt class="date">2012/04~2016/03</dt>
-                                <dd>宇都宮大学 工学部建築学コース</dd>
-                            </dl>
-                            <dl>
-                                <dt class="date">2016/04~2018/03</dt>
-                                <dd>宇都宮大学大学院 工学研究科<br>
-                                    地球環境デザイン学専攻</dd>
-                            </dl>
+                    <div class="scroll-up">
+                        <div class="subject-title">
+                            <h3 id="about2">Architecture Career</h3>
+                            <h4>建築関連の経歴</h4>
                         </div>
-                    </div>
-                    <h3>- 職務経歴 -</h3>
-                    <div class="subject">
-                        <div class="history">
-                            <dl>
-                                <dt class="date">2018/04~2022/01</dt>
-                                <dd>株式会社東畑建築事務所</dd>
-                            </dl>
-                            <dl>
-                                <dt class="date">2022/04~2022/10</dt>
-                                <dd>TAKシステムズ</dd>
-                            </dl>
-                            <dl>
-                                <dt class="date">2022/11~2023/05</dt>
-                                <dd>ダイダン株式会社</dd>
-                            </dl>
-                            <dl>
-                                <dt class="date">2023/06~2024/03</dt>
-                                <dd>積水アクアシステム株式会社</dd>
-                            </dl>
+                        <h3>- 学歴 -</h3>
+                        <div class="subject">
+                            <div class="history">
+                                <dl>
+                                    <dt class="date">2012/04~2016/03</dt>
+                                    <dd>宇都宮大学 工学部建築学コース</dd>
+                                </dl>
+                                <dl>
+                                    <dt class="date">2016/04~2018/03</dt>
+                                    <dd>宇都宮大学大学院 工学研究科<br>
+                                        地球環境デザイン学専攻</dd>
+                                </dl>
+                            </div>
                         </div>
+                        <h3>- 職務経歴 -</h3>
+                        <div class="subject">
+                            <div class="history">
+                                <dl>
+                                    <dt class="date">2018/04~2022/01</dt>
+                                    <dd>株式会社東畑建築事務所</dd>
+                                </dl>
+                                <dl>
+                                    <dt class="date">2022/04~2022/10</dt>
+                                    <dd>TAKシステムズ</dd>
+                                </dl>
+                                <dl>
+                                    <dt class="date">2022/11~2023/05</dt>
+                                    <dd>ダイダン株式会社</dd>
+                                </dl>
+                                <dl>
+                                    <dt class="date">2023/06~2024/03</dt>
+                                    <dd>積水アクアシステム株式会社</dd>
+                                </dl>
+                            </div>
+                        </div>
+                        <p>建築業界では主に空調衛生分野を中心に仕事をしていました。<br>
+                            業務内容は図面作成や機器選定、施主や行政との打ち合わせなどです。</p>
                     </div>
-                    <p>建築業界では主に空調衛生分野を中心に仕事をしていました。<br>
-                        業務内容は図面作成や機器選定、施主や行政との打ち合わせなどです。</p>
                 </div>
             </div>
 
@@ -141,35 +144,37 @@
                 </div>
                 <div class="blank"></div>
                 <div class="Intro-back">
-                    <div class="subject-title">
-                        <h3 id="about3">IT Career</h3>
-                        <h4>IT関連の経歴</h4>
-                    </div>
-                    <h3>- IT経歴 -</h3>
-                    <div class="subject">
-                        <div class="history">
-                            <dl>
-                                <dt class="date">2022/06~2023/12</dt>
-                                <dd>社会人インターンで独学でGASツールを作成</dd>
-                            </dl>
-                            <dl>
-                                <dt class="date">2022/07~2023/06</dt>
-                                <dd>ITスクール
-                                    <ul>
-                                        <li>HTML</li>
-                                        <li>CSS</li>
-                                        <li>JavaScript</li>
-                                        <li>PHP</li>
-                                        <li>React</li>
-                                    </ul>
-                                </dd>
-                            </dl>
+                    <div class="scroll-up">
+                        <div class="subject-title">
+                            <h3 id="about3">IT Career</h3>
+                            <h4>IT関連の経歴</h4>
                         </div>
+                        <h3>- IT経歴 -</h3>
+                        <div class="subject">
+                            <div class="history">
+                                <dl>
+                                    <dt class="date">2022/06~2023/12</dt>
+                                    <dd>社会人インターンで独学でGASツールを作成</dd>
+                                </dl>
+                                <dl>
+                                    <dt class="date">2022/07~2023/06</dt>
+                                    <dd>ITスクール
+                                        <ul>
+                                            <li>HTML</li>
+                                            <li>CSS</li>
+                                            <li>JavaScript</li>
+                                            <li>PHP</li>
+                                            <li>React</li>
+                                        </ul>
+                                    </dd>
+                                </dl>
+                            </div>
+                        </div>
+                        <p>業務改善のためにGoogle Apps Script(GAS)を独学で学びました。<br>
+                            メールや請求書などを自動で作成するツールを作成しました。</p>
+                        <p>ITスクールでは週1時間の講習と1日2時間ほどの自主学習を1年間続けました。</p>
+                        <p>現在は幅広い知識と経験を得るために、IT業界で転職活動をしています。</p>
                     </div>
-                    <p>業務改善のためにGoogle Apps Script(GAS)を独学で学びました。<br>
-                        メールや請求書などを自動で作成するツールを作成しました。</p>
-                    <p>ITスクールでは週1時間の講習と1日2時間ほどの自主学習を1年間続けました。</p>
-                    <p>現在は幅広い知識と経験を得るために、IT業界で転職活動をしています。</p>
                 </div>
             </div>
             <div class="Introduction">
@@ -178,8 +183,10 @@
                 </div>
                 <div class="blank"></div>
                 <div class="Intro-back">
-                    <div class="Intro-title">
-                        <img src="picture\diy\table1.jpg" alt="back3-1">
+                    <div class="scroll-up">
+                        <div class="Intro-title">
+                            <img src="picture\diy\table1.jpg" alt="table1">
+                        </div>
                     </div>
                 </div>
             </div>
@@ -191,6 +198,7 @@
             <p>&copy; 2024 Shotaro Yoshizawa. All Rights Reserved.</p>
         </div>
     </footer>
+    <script src="js/about.js"></script>
 </body>
 
 </html>

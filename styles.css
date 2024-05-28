@@ -128,18 +128,20 @@ nav {
     padding: 5px 5px;
     margin: 5px 0;
     position: relative;
+    
+    color: white;
+    
+    font-size: 18px;
 }
 
 .nav-item:hover {
     background-color: rgba(50, 50, 50, 0.9);
 }
 
-.nav-item a,
+.nav-menu a,
 .submenu-btn {
-    color: white;
-    text-decoration: none;
-    font-size: 18px;
     cursor: pointer;
+    text-decoration: none;
 }
 
 /*
@@ -464,21 +466,16 @@ section {
 
 .subject-title h3 {
     text-align: left;
-    padding-left: 30px;
-    padding-right: 30px;
     color: gray;
     font-size: 30px;
-    padding-top: 100px;
-    margin-top: -100px;
-    margin-bottom: 0;
+    margin: 0 30px 0 30px;
 }
 
 .subject-title h4 {
-    padding: 8px 0 5px 30px;
-    margin: o auto 20px auto;
+    padding: 8px 0 5px 0;
+    margin: 0 30px 20px 30px;
     text-align: left;
     border-bottom: 1px solid gray;
-    margin-top: 0;
 }
 
 @media(min-width:751px) {

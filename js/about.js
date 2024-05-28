@@ -1,9 +1,9 @@
 window.addEventListener("DOMContentLoaded", () => {
   initGridCanvas('#myCanvas0'); //グリッド背景
-  initCanvasWithModel('#myCanvas1', 'https://rawcdn.githack.com/ShotaroYoshizawa/profile.diy/d817fa1db4b6b210bd5c06abb4c6e936a8e91736/glb/table1.glb');
+  initCanvasWithModel('#myCanvas1', 'https://rawcdn.githack.com/ShotaroYoshizawa/profile.diy/6cc27c376f68a1a78d6f835c0544a7653f77293f/glb/table1.glb');
   initCanvasWithModel('#myCanvas2', 'https://rawcdn.githack.com/ShotaroYoshizawa/profile.diy/d817fa1db4b6b210bd5c06abb4c6e936a8e91736/glb/table4.1.glb');
-  initCanvasWithModel('#myCanvas3', 'https://rawcdn.githack.com/ShotaroYoshizawa/profile.diy/d817fa1db4b6b210bd5c06abb4c6e936a8e91736/glb/table2.glb');
-  initCanvasWithModel('#myCanvas4', 'https://rawcdn.githack.com/ShotaroYoshizawa/profile.diy/d817fa1db4b6b210bd5c06abb4c6e936a8e91736/glb/table1.glb');
+  initCanvasWithModel('#myCanvas3', 'https://rawcdn.githack.com/ShotaroYoshizawa/profile.diy/6cc27c376f68a1a78d6f835c0544a7653f77293f/glb/table2.glb');
+  initCanvasWithModel('#myCanvas4', 'https://rawcdn.githack.com/ShotaroYoshizawa/profile.diy/6cc27c376f68a1a78d6f835c0544a7653f77293f/glb/table1.glb');
 });
 
 function initCanvasWithModel(canvasSelector, modelUrl) {
@@ -14,6 +14,9 @@ function initCanvasWithModel(canvasSelector, modelUrl) {
       canvas: canvasElement,
       alpha: true, // 透過を有効化
   });
+  renderer.physicallyCorrectLights = true;
+  renderer.outputEncoding = THREE.sRGBEncoding;
+//    renderer.toneMapping = THREE.ACESFilmicToneMapping;
 
   // サイズ指定
   renderer.setPixelRatio(window.devicePixelRatio);
@@ -24,14 +27,14 @@ function initCanvasWithModel(canvasSelector, modelUrl) {
   renderer.setClearColor(0x000000, 0); // 背景色のアルファ値を透過指定
 
   // 環境光源を作成
-  const ambientLight = new THREE.AmbientLight(0xffffff);
-  ambientLight.intensity = 1;
+  const ambientLight = new THREE.AmbientLight(0xffffff, 1.0);
+  ambientLight.intensity = 2;
   scene.add(ambientLight);
 
   // 平行光源を作成
-  const directionalLight = new THREE.DirectionalLight(0xffffff);
-  directionalLight.intensity = 1;
-  directionalLight.position.set(0, 3, 6); // x, y, z の位置を指定
+  const directionalLight = new THREE.DirectionalLight(0xffffff, 1.0);
+  directionalLight.intensity = 3;
+  directionalLight.position.set(0, 4, 8); // x, y, z の位置を指定
   scene.add(directionalLight);
 
   // カメラを作成
@@ -125,23 +128,29 @@ function initGridCanvas(canvasSelector) {
 
 
 //About　のスライド移行
-
-const img = ["picture/tanbo/tanbo1.jpg",
+const img = [
+  "picture/tanbo/tanbo1.jpg",
   "picture/tanbo/tanbo2.jpg",
   "picture/tanbo/tanbo3.jpg",
   "picture/tanbo/tanbo4.jpg",
   "picture/tanbo/tanbo5.jpg",
-  "picture/tanbo/tanbo6.jpg"];
-let count = -1;
-picChange();
+  "picture/tanbo/tanbo6.jpg"
+];
+
+let count = 0;
+const changePic = document.getElementById('changePic');
+
 function picChange() {
-  count++;
-  if (count == img.length) count = 0;
-  //画像選択
+  count = (count + 1) % img.length;
+  
+  // 画像のロード完了を待たずに切り替え
   changePic.src = img[count];
-  //秒数の指定
-  setTimeout("picChange()", 8000);
+
+  setTimeout(picChange, 8000);
 }
+
+picChange();
+
 
 //lode用
 function load_effect() {
