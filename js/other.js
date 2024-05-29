@@ -1,116 +1,105 @@
 window.addEventListener("DOMContentLoaded", () => {
-  let currentModelIndex = 0;
   const models = [
-    'https://rawcdn.githack.com/ShotaroYoshizawa/profile.diy/6cc27c376f68a1a78d6f835c0544a7653f77293f/glb/table1.glb',
-    'https://rawcdn.githack.com/ShotaroYoshizawa/profile.diy/6cc27c376f68a1a78d6f835c0544a7653f77293f/glb/table2.glb',
-    // Add more model URLs here if needed
+      'https://rawcdn.githack.com/ShotaroYoshizawa/profile.diy/6cc27c376f68a1a78d6f835c0544a7653f77293f/glb/table1.glb',
+      'https://rawcdn.githack.com/ShotaroYoshizawa/profile.diy/6cc27c376f68a1a78d6f835c0544a7653f77293f/glb/table2.glb',
+      'https://rawcdn.githack.com/ShotaroYoshizawa/profile.diy/a341dc059db5a26075f94cca17a8726ae55d2c03/glb/bed.glb',
+      'https://rawcdn.githack.com/ShotaroYoshizawa/profile.diy/a341dc059db5a26075f94cca17a8726ae55d2c03/glb/bed2.glb',
+      // 他のモデルURLをここに追加
   ];
-  
-  initCanvasWithModel('#myCanvas1', models[currentModelIndex]);
+  let currentIndex = 0;
 
-  document.getElementById('nextButton').addEventListener('click', () => {
-    currentModelIndex = (currentModelIndex + 1) % models.length;
-    changeModel('#myCanvas1', models[currentModelIndex]);
+  initGridCanvas('#myCanvas0'); // グリッド背景
+  initCanvasWithModel('#myCanvas1', models[currentIndex]);
+
+  document.getElementById('prevModelButton').addEventListener('click', () => {
+      currentIndex = (currentIndex > 0) ? currentIndex - 1 : models.length - 1;
+      initCanvasWithModel('#myCanvas1', models[currentIndex]);
   });
 
-  document.getElementById('prevButton').addEventListener('click', () => {
-    currentModelIndex = (currentModelIndex - 1 + models.length) % models.length;
-    changeModel('#myCanvas1', models[currentModelIndex]);
+  document.getElementById('nextModelButton').addEventListener('click', () => {
+      currentIndex = (currentIndex < models.length - 1) ? currentIndex + 1 : 0;
+      initCanvasWithModel('#myCanvas1', models[currentIndex]);
   });
 });
 
-function changeModel(canvasSelector, modelUrl) {
-  const canvasElement = document.querySelector(canvasSelector);
-  const renderer = canvasElement.renderer;
-  const scene = canvasElement.scene;
-  const camera = canvasElement.camera;
-  const controls = canvasElement.controls;
-  let model = canvasElement.model;
-
-  // Remove current model if exists
-  if (model !== null) {
-    scene.remove(model);
-    model = null;
-  }
-
-  // Load new model
-  const loader = new THREE.GLTFLoader();
-  loader.load(
-    modelUrl,
-    function (glb) {
-      model = glb.scene;
-      model.scale.set(1, 1, 1);
-      model.position.set(0, 0, 0);
-      scene.add(glb.scene);
-      canvasElement.model = model; // Update the model reference
-    },
-    undefined,
-    function (error) {
-      console.log(error);
-    }
-  );
-}
-
 function initCanvasWithModel(canvasSelector, modelUrl) {
+  // レンダラーを作成
   const canvasElement = document.querySelector(canvasSelector);
   const renderer = new THREE.WebGLRenderer({
-    antialias: true,
-    canvas: canvasElement,
-    alpha: true,
+      antialias: true,
+      canvas: canvasElement,
+      alpha: true, // 透過を有効化
   });
   renderer.physicallyCorrectLights = true;
   renderer.outputEncoding = THREE.sRGBEncoding;
 
-  const scene = new THREE.Scene();
-  renderer.setClearColor(0x000000, 0);
+  // サイズ指定
+  renderer.setPixelRatio(window.devicePixelRatio);
+  renderer.setSize(window.innerWidth, window.innerHeight);
 
+  // シーンを作成
+  const scene = new THREE.Scene();
+  renderer.setClearColor(0x000000, 0); // 背景色のアルファ値を透過指定
+
+  // 環境光源を作成
   const ambientLight = new THREE.AmbientLight(0xffffff, 1.0);
   ambientLight.intensity = 2;
   scene.add(ambientLight);
 
+  // 平行光源を作成
   const directionalLight = new THREE.DirectionalLight(0xffffff, 1.0);
   directionalLight.intensity = 3;
-  directionalLight.position.set(0, 4, 8);
+  directionalLight.position.set(0, 4, 8); // x, y, z の位置を指定
   scene.add(directionalLight);
 
+  // カメラを作成
   const fov = 30;
-  const fovRad = (fov / 2) * (Math.PI / 180);
-  let distance = (window.innerHeight / 2) / Math.tan(fovRad);
+  const fovRad = (fov / 2) * (Math.PI / 180); // 視野角をラジアンに変換
+  let distance = (window.innerHeight / 2) / Math.tan(fovRad); // カメラ距離を求める
   const camera = new THREE.PerspectiveCamera(fov, window.innerWidth / window.innerHeight, 0.1, 1000);
   camera.position.set(4, 2, distance / 10000 * 8);
   camera.lookAt(scene.position);
 
+  // コントロールを作成
   const controls = new THREE.OrbitControls(camera, renderer.domElement);
 
-  canvasElement.renderer = renderer;
-  canvasElement.scene = scene;
-  canvasElement.camera = camera;
-  canvasElement.controls = controls;
-  
-  changeModel(canvasSelector, modelUrl);
+  // 3Dモデルの読み込み
+  const loader = new THREE.GLTFLoader();
+  let model = null;
+  loader.load(
+      modelUrl,
+      function (glb) {
+          if (model) {
+              scene.remove(model);
+          }
+          model = glb.scene;
+          model.scale.set(1, 1, 1);
+          model.position.set(0, 0, 0);
+          scene.add(model);
+      },
+      undefined,
+      function (error) {
+          console.log(error);
+      }
+  );
 
+  // スクロールに連動してモデルを回転させる
   window.addEventListener('scroll', () => {
-    const model = canvasElement.model;
-    if (model) {
-      const scrollPosition = window.scrollY;
-      model.rotation.y = scrollPosition * 0.001;
-    }
+      if (model) {
+          const scrollPosition = window.scrollY;
+          model.rotation.y = scrollPosition * 0.001; // スクロール位置に基づいて回転
+      }
   });
 
   function tick() {
-    requestAnimationFrame(tick);
-    controls.update();
-    renderer.render(scene, camera);
+      requestAnimationFrame(tick);
+      controls.update();
+      renderer.render(scene, camera);
   }
   tick();
 }
 
-
-window.addEventListener("DOMContentLoaded", () => {
-  initGridCanvas('#myCanvas0'); //グリッド背景
-});
-
-//グリッド背景
+// グリッド背景
 function initGridCanvas(canvasSelector) {
   // レンダラーを作成
   const canvasElement = document.querySelector(canvasSelector);
@@ -138,7 +127,7 @@ function initGridCanvas(canvasSelector) {
   camera.position.set(40, 30, 40);
   camera.lookAt(0, 0, 0);
 
-  //グリッド背景
+  // グリッド背景
   const gridHelper = new THREE.GridHelper(200, 40, 0xdcdcdc, 0xdcdcdc);
   scene.add(gridHelper);
 
@@ -154,6 +143,7 @@ function initGridCanvas(canvasSelector) {
   resizeRenderer();
   animate();
 }
+
 
 
 //lode用
