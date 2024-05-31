@@ -846,6 +846,49 @@ ul.listCover {
 
 /*↑画像一覧*/
 
+
+/*↓otherモデル*/
+.buttons {
+    position: absolute;
+    top: 50%;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    transform: translateY(-50%);
+}
+
+button {
+    background-color: #555;
+    color: white;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    height: 30px; /* 任意の高さ */
+    width: 30px; /* 任意の幅 */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5em;
+    border-radius: 50%; /* ボタンを丸くする */
+    outline: none;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #333;
+}
+
+.nav-button.left {
+    position: absolute;
+    left: 10px;
+}
+
+.nav-button.right {
+    position: absolute;
+    right: 10px;
+}
+/*↑otherモデル*/
+
 .other-content h4 {
     margin-bottom: 5px;
 }
