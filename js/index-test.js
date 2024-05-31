@@ -28,6 +28,7 @@ window.addEventListener("DOMContentLoaded", () => {
     ]);
 });
 
+
 function initCanvasWithModels(canvasSelector, modelsConfig) {
     // レンダラーを作成
     const canvasElement = document.querySelector(canvasSelector);
