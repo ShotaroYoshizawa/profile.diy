@@ -986,3 +986,39 @@ footer nav ul li a {
 }
 
 /* スクロールバー↑ */
+
+
+/* test↓ */
+.section {
+    height: 200vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2em;
+  }
+
+#section1{
+    background-color: rgba(255, 0, 0, 0.5);
+    z-index: 1;
+}
+
+#section2{
+    background-color: rgba(255, 255, 0, 0.5);
+    z-index: 1;
+}
+
+#section3{
+    background-color: rgba(0, 255, 255, 0.5);
+    z-index: 1;
+}
+
+#section4{
+    background-color: rgba(0, 255, 0, 0.5);
+    z-index: 1;
+}
+
+#section5{
+    background-color: rgba(0, 0, 255, 0.5);
+    z-index: 1;
+}
+/* test↑ */
