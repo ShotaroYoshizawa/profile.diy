@@ -1,30 +1,35 @@
 const models = [
     {
-        url: 'https://rawcdn.githack.com/ShotaroYoshizawa/profile.diy/a341dc059db5a26075f94cca17a8726ae55d2c03/glb/bed.glb',
+        id: 'section1',
+        url: 'https://rawcdn.githack.com/ShotaroYoshizawa/profile.diy/d6b142285eb354422b035b373a951065983810f4/glb/bed5.1.glb',
         position: { x: -2, y: 0, z: 4 },
         rotation: { x: 0, y: 0, z: 0 },
         cameraOffset: { x: 0, y: 2, z: 5 }
     },
     {
-        url: 'https://rawcdn.githack.com/ShotaroYoshizawa/profile.diy/6cc27c376f68a1a78d6f835c0544a7653f77293f/glb/table1.glb',
+        id: 'section2',
+        url: 'https://rawcdn.githack.com/ShotaroYoshizawa/profile.diy/cb0e9e06179648a51c9922f5df310fb4c6552a60/glb/bed3.1.glb',
         position: { x: -4, y: 0, z: 1 },
         rotation: { x: 0, y: 45, z: 0 },
         cameraOffset: { x: -5, y: 2, z: 0 }
     },
     {
-        url: 'https://rawcdn.githack.com/ShotaroYoshizawa/profile.diy/a341dc059db5a26075f94cca17a8726ae55d2c03/glb/bed2.glb',
+        id: 'section3',
+        url: 'https://rawcdn.githack.com/ShotaroYoshizawa/profile.diy/a341dc059db5a26075f94cca17a8726ae55d2c03/glb/bed4.glb',
         position: { x: 0, y: 0, z: -1 },
         rotation: { x: 0, y: 90, z: 0 },
         cameraOffset: { x: 0, y: 2, z: -5 }
     },
     {
-        url: 'https://rawcdn.githack.com/ShotaroYoshizawa/profile.diy/6cc27c376f68a1a78d6f835c0544a7653f77293f/glb/table2.glb',
+        id: 'section4',
+        url: 'https://rawcdn.githack.com/ShotaroYoshizawa/profile.diy/a341dc059db5a26075f94cca17a8726ae55d2c03/glb/bed.glb',
         position: { x: 4, y: 0, z: 1 },
         rotation: { x: 0, y: 45, z: 0 },
         cameraOffset: { x: 5, y: 2, z: 0 }
     },
     {
-        url: 'https://rawcdn.githack.com/ShotaroYoshizawa/profile.diy/a341dc059db5a26075f94cca17a8726ae55d2c03/glb/bed.glb',
+        id: 'section5',
+        url: 'https://rawcdn.githack.com/ShotaroYoshizawa/profile.diy/a341dc059db5a26075f94cca17a8726ae55d2c03/glb/bed2.glb',
         position: { x: 2, y: 0, z: 4 },
         rotation: { x: 0, y: 90, z: 0 },
         cameraOffset: { x: 0, y: 2, z: 5 }
@@ -33,7 +38,10 @@ const models = [
 
 let scene, camera, renderer, controls, currentModels = [];
 let activeModelIndex = -1;
+let rotationRequestId;
+let cameraTween;
 
+// 初期化関数
 function init() {
     // レンダラーを作成
     const canvasElement = document.querySelector('#myCanvas1');
@@ -52,13 +60,11 @@ function init() {
     renderer.setClearColor(0x000000, 0);
 
     // 環境光源を作成
-    const ambientLight = new THREE.AmbientLight(0xffffff, 1.0);
-    ambientLight.intensity = 2;
+    const ambientLight = new THREE.AmbientLight(0xffffff, 2.0);
     scene.add(ambientLight);
 
     // 平行光源を作成
-    const directionalLight = new THREE.DirectionalLight(0xffffff, 1.0);
-    directionalLight.intensity = 3;
+    const directionalLight = new THREE.DirectionalLight(0xffffff, 3.0);
     directionalLight.position.set(0, 4, 8);
     scene.add(directionalLight);
 
@@ -87,7 +93,7 @@ function init() {
 
 function loadModels() {
     const loader = new THREE.GLTFLoader();
-    models.forEach(modelData => {
+    models.forEach((modelData, index) => {
         loader.load(
             modelData.url,
             function (glb) {
@@ -96,19 +102,19 @@ function loadModels() {
                 model.position.set(modelData.position.x, modelData.position.y, modelData.position.z);
 
                 // 度数をラジアンに変換して回転を設定
-                const radianRotation = {
-                    x: THREE.MathUtils.degToRad(modelData.rotation.x),
-                    y: THREE.MathUtils.degToRad(modelData.rotation.y),
-                    z: THREE.MathUtils.degToRad(modelData.rotation.z)
-                };
-                model.rotation.set(radianRotation.x, radianRotation.y, radianRotation.z);
+                model.rotation.set(
+                    THREE.MathUtils.degToRad(modelData.rotation.x),
+                    THREE.MathUtils.degToRad(modelData.rotation.y),
+                    THREE.MathUtils.degToRad(modelData.rotation.z)
+                );
 
                 scene.add(model);
-                currentModels.push(model);
+                currentModels[index] = model;  // 正しいインデックスでモデルを保存
+                console.log(`Model loaded: ${modelData.id}`);
             },
             undefined,
             function (error) {
-                console.log(error);
+                console.error(error);
             }
         );
     });
@@ -117,44 +123,76 @@ function loadModels() {
 function onScroll() {
     const sections = document.querySelectorAll('.section');
     const scrollTop = window.scrollY;
-    const windowHeight = window.innerHeight;
 
     sections.forEach((section, index) => {
         const sectionTop = section.offsetTop;
         const sectionHeight = section.offsetHeight;
 
         if (scrollTop >= sectionTop && scrollTop < sectionTop + sectionHeight) {
-            switchCamera(index);
+            switchCameraAndRotateModel(index);
         }
     });
 }
 
-function switchCamera(index) {
+function switchCameraAndRotateModel(index) {
     if (index === activeModelIndex) return; // 同じセクションなら何もしない
 
+    console.log(`Switching to section: ${models[index].id}`);
+
+    // 前のモデルの回転を停止
+    cancelAnimationFrame(rotationRequestId);
+
     activeModelIndex = index;
+
+    // カメラの位置を更新
     const modelData = models[index];
-    const targetPosition = new THREE.Vector3(modelData.position.x, modelData.position.y, modelData.position.z);
-    const cameraPosition = new THREE.Vector3(
-        modelData.position.x + modelData.cameraOffset.x,
-        modelData.position.y + modelData.cameraOffset.y,
-        modelData.position.z + modelData.cameraOffset.z
-    );
+    const newCameraPosition = {
+        x: modelData.position.x + modelData.cameraOffset.x,
+        y: modelData.position.y + modelData.cameraOffset.y,
+        z: modelData.position.z + modelData.cameraOffset.z,
+    };
 
-    // 先にカメラの視点をモデルの位置に切り替え
-    camera.lookAt(targetPosition);
-    controls.target.copy(targetPosition);
+    // カメラの位置更新中にモデルの回転を停止しない
+    if (cameraTween) cameraTween.kill();
 
-    // その後、カメラの位置をアニメーションで変更
-    gsap.to(camera.position, {
-        x: cameraPosition.x,
-        y: cameraPosition.y,
-        z: cameraPosition.z,
-        duration: 1, // カメラ移動アニメーションの時間（秒）
+    cameraTween = gsap.to(camera.position, {
+        duration: 1,
+        x: newCameraPosition.x,
+        y: newCameraPosition.y,
+        z: newCameraPosition.z,
         onUpdate: function () {
-            camera.lookAt(targetPosition);
+            camera.lookAt(modelData.position.x, modelData.position.y, modelData.position.z);
+        },
+        onComplete: function () {
+            camera.lookAt(modelData.position.x, modelData.position.y, modelData.position.z);
         }
     });
+
+    // カメラが常にモデルの設置座標を見るようにする
+    gsap.to(controls.target, {
+        duration: 1,
+        x: modelData.position.x,
+        y: modelData.position.y,
+        z: modelData.position.z,
+    });
+
+    // モデルの回転を再開
+    startModelRotation(index);
+}
+
+function startModelRotation(index) {
+    const model = currentModels[index];
+    const rotationSpeed = 0.01;
+
+    console.log(`Starting rotation for model: ${models[index].id}`);
+
+    function animateRotation() {
+        if (index !== activeModelIndex) return;
+        model.rotation.y += rotationSpeed;
+        rotationRequestId = requestAnimationFrame(animateRotation);
+    }
+
+    animateRotation();
 }
 
 // 初期化関数を実行

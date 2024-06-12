@@ -990,12 +990,15 @@ footer nav ul li a {
 
 /* test↓ */
 .section {
-    height: 200vh;
+    min-height: 200vh;
     display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 2em;
   }
+  
+#section0{
+    background-color: rgba(255, 0, 255, 0.5);
+    z-index: 1;
+}
+
 
 #section1{
     background-color: rgba(255, 0, 0, 0.5);
