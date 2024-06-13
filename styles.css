@@ -991,7 +991,6 @@ footer nav ul li a {
 /* test↓ */
 .section {
     min-height: 200vh;
-    display: flex;
   }
   
 #section0{
