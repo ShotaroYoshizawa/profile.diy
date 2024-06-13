@@ -1,38 +1,45 @@
 const models = [
     {
-        id: 'section1',
-        url: 'https://rawcdn.githack.com/ShotaroYoshizawa/profile.diy/d6b142285eb354422b035b373a951065983810f4/glb/bed5.1.glb',
-        position: { x: -2, y: 0, z: 4 },
+        id: 'section0',
+        url: '',
+        position: { x: 0, y: 0, z: 0 },
         rotation: { x: 0, y: 0, z: 0 },
-        cameraOffset: { x: 0, y: 2, z: 5 }
+        cameraOffset: { x: 0, y: 3, z: 10 }
+    },
+    {
+        id: 'section1',
+        url: 'https://rawcdn.githack.com/ShotaroYoshizawa/profile.diy/a341dc059db5a26075f94cca17a8726ae55d2c03/glb/bed.glb',
+        position: { x: 0, y: 1, z: 5 },
+        rotation: { x: 0, y: -45, z: 0 },
+        cameraOffset: { x: 0, y: 2, z: 4 }
     },
     {
         id: 'section2',
-        url: 'https://rawcdn.githack.com/ShotaroYoshizawa/profile.diy/cb0e9e06179648a51c9922f5df310fb4c6552a60/glb/bed3.1.glb',
-        position: { x: -4, y: 0, z: 1 },
-        rotation: { x: 0, y: 45, z: 0 },
-        cameraOffset: { x: -5, y: 2, z: 0 }
+        url: 'https://rawcdn.githack.com/ShotaroYoshizawa/profile.diy/6cc27c376f68a1a78d6f835c0544a7653f77293f/glb/table1.glb',
+        position: { x: -3, y: 1, z: 2 },
+        rotation: { x: 0, y: 0, z: 0 },
+        cameraOffset: { x: -3, y: 1.5, z: 0 }
     },
     {
         id: 'section3',
         url: 'https://rawcdn.githack.com/ShotaroYoshizawa/profile.diy/a341dc059db5a26075f94cca17a8726ae55d2c03/glb/bed4.glb',
-        position: { x: 0, y: 0, z: -1 },
+        position: { x: -1.5, y: 1, z: -1 },
         rotation: { x: 0, y: 90, z: 0 },
-        cameraOffset: { x: 0, y: 2, z: -5 }
+        cameraOffset: { x: -2, y: 2, z: -3 }
     },
     {
         id: 'section4',
         url: 'https://rawcdn.githack.com/ShotaroYoshizawa/profile.diy/a341dc059db5a26075f94cca17a8726ae55d2c03/glb/bed.glb',
-        position: { x: 4, y: 0, z: 1 },
-        rotation: { x: 0, y: 45, z: 0 },
-        cameraOffset: { x: 5, y: 2, z: 0 }
+        position: { x: 1.5, y: 1, z: -1 },
+        rotation: { x: 0, y: 0, z: 0 },
+        cameraOffset: { x: 2, y: 2, z: -3 }
     },
     {
         id: 'section5',
         url: 'https://rawcdn.githack.com/ShotaroYoshizawa/profile.diy/a341dc059db5a26075f94cca17a8726ae55d2c03/glb/bed2.glb',
-        position: { x: 2, y: 0, z: 4 },
-        rotation: { x: 0, y: 90, z: 0 },
-        cameraOffset: { x: 0, y: 2, z: 5 }
+        position: { x: 3, y: 1, z: 2 },
+        rotation: { x: 0, y: 45, z: 0 },
+        cameraOffset: { x: 4, y: 2, z: 0 }
     }
 ];
 
@@ -71,7 +78,11 @@ function init() {
     // カメラを作成
     const fov = 45;
     camera = new THREE.PerspectiveCamera(fov, window.innerWidth / window.innerHeight, 0.1, 1000);
-    camera.position.set(0, 2, 10);
+    camera.position.set(0, 3, 10);
+
+    //グリッド背景
+    const gridHelper = new THREE.GridHelper(50, 40, 0xdcdcdc, 0xdcdcdc);
+    scene.add(gridHelper);
 
     // コントロールを作成
     controls = new THREE.OrbitControls(camera, renderer.domElement);
@@ -110,7 +121,6 @@ function loadModels() {
 
                 scene.add(model);
                 currentModels[index] = model;  // 正しいインデックスでモデルを保存
-                console.log(`Model loaded: ${modelData.id}`);
             },
             undefined,
             function (error) {
@@ -136,8 +146,6 @@ function onScroll() {
 
 function switchCameraAndRotateModel(index) {
     if (index === activeModelIndex) return; // 同じセクションなら何もしない
-
-    console.log(`Switching to section: ${models[index].id}`);
 
     // 前のモデルの回転を停止
     cancelAnimationFrame(rotationRequestId);
@@ -184,8 +192,6 @@ function startModelRotation(index) {
     const model = currentModels[index];
     const rotationSpeed = 0.01;
 
-    console.log(`Starting rotation for model: ${models[index].id}`);
-
     function animateRotation() {
         if (index !== activeModelIndex) return;
         model.rotation.y += rotationSpeed;
@@ -197,3 +203,98 @@ function startModelRotation(index) {
 
 // 初期化関数を実行
 init();
+
+
+//グリッド背景
+window.addEventListener("DOMContentLoaded", () => {
+    initGridCanvas('#myCanvas0'); //グリッド背景
+});
+
+function initGridCanvas(canvasSelector) {
+    // レンダラーを作成
+    const canvasElement = document.querySelector(canvasSelector);
+    const renderer = new THREE.WebGLRenderer({
+        antialias: true,
+        canvas: canvasElement,
+        alpha: true, // 透過を有効化
+    });
+
+    // サイズ指定
+    function resizeRenderer() {
+        const width = window.innerWidth;
+        const height = window.innerHeight;
+        renderer.setSize(width, height);
+        camera.aspect = width / height;
+        camera.updateProjectionMatrix();
+    }
+
+    // シーンを作成
+    const scene = new THREE.Scene();
+    renderer.setClearColor(0x000000, 0);
+
+    // カメラを作成
+    const camera = new THREE.PerspectiveCamera(30, window.innerWidth / window.innerHeight, 0.1, 1000);
+    camera.position.set(40, 30, 40);
+    camera.lookAt(0, 0, 0);
+
+    //グリッド背景
+    const gridHelper = new THREE.GridHelper(200, 40, 0xdcdcdc, 0xdcdcdc);
+    scene.add(gridHelper);
+
+    function animate() {
+        requestAnimationFrame(animate);
+        renderer.render(scene, camera);
+    }
+
+    window.addEventListener('resize', () => {
+        resizeRenderer();
+    });
+
+    resizeRenderer();
+    animate();
+}
+
+
+// ボタンの表示を制御する関数
+window.onscroll = function () {
+    var scrollTopButton = document.getElementById("scrollTopButton");
+    if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+        scrollTopButton.style.display = "flex";
+    } else {
+        scrollTopButton.style.display = "none";
+    }
+};
+
+//lode用
+function load_effect() {
+    var element = document.getElementsByClassName('load-fade');
+    if (!element) return; // 要素がない場合は終了
+
+    for (var i = 0; i < element.length; i++) {
+        element[i].classList.add('is-show');
+    }
+}
+setTimeout(load_effect, 600); // 600ミリ秒経過後に実行
+
+//scroll用
+function scroll_effect() {
+    var element = document.getElementsByClassName('scroll-up');
+    if (!element) return;
+
+    var scrollY = window.pageYOffset;
+    var windowH = window.innerHeight;
+    var showTiming = 200; // 要素を表示するタイミング
+    for (var i = 0; i < element.length; i++) {
+        var elemClientRect = element[i].getBoundingClientRect();
+        var elemY = scrollY + elemClientRect.top;
+        if (scrollY > elemY - windowH + showTiming) {
+            element[i].classList.add('is-show');
+        }
+    }
+}
+window.addEventListener('scroll', scroll_effect); // スクロール時に実行
+
+// ページの一番上にスクロールする関数
+function scrollToTop() {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+}

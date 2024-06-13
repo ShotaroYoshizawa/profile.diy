@@ -1,9 +1,9 @@
 window.addEventListener("DOMContentLoaded", () => {
   initGridCanvas('#myCanvas0'); //グリッド背景
-  initCanvasWithModel('#myCanvas1', 'https://rawcdn.githack.com/ShotaroYoshizawa/profile.diy/6cc27c376f68a1a78d6f835c0544a7653f77293f/glb/table1.glb');
-  initCanvasWithModel('#myCanvas2', 'https://rawcdn.githack.com/ShotaroYoshizawa/profile.diy/d817fa1db4b6b210bd5c06abb4c6e936a8e91736/glb/table4.1.glb');
-  initCanvasWithModel('#myCanvas3', 'https://rawcdn.githack.com/ShotaroYoshizawa/profile.diy/6cc27c376f68a1a78d6f835c0544a7653f77293f/glb/table2.glb');
-  initCanvasWithModel('#myCanvas4', 'https://rawcdn.githack.com/ShotaroYoshizawa/profile.diy/6cc27c376f68a1a78d6f835c0544a7653f77293f/glb/table1.glb');
+  initCanvasWithModel('#myCanvas1', 'https://rawcdn.githack.com/ShotaroYoshizawa/profile.diy/a341dc059db5a26075f94cca17a8726ae55d2c03/glb/bed.glb');
+  initCanvasWithModel('#myCanvas2', 'https://rawcdn.githack.com/ShotaroYoshizawa/profile.diy/cb0e9e06179648a51c9922f5df310fb4c6552a60/glb/bed3.1.glb');
+  initCanvasWithModel('#myCanvas3', 'https://rawcdn.githack.com/ShotaroYoshizawa/profile.diy/a341dc059db5a26075f94cca17a8726ae55d2c03/glb/bed.glb');
+  initCanvasWithModel('#myCanvas4', 'https://rawcdn.githack.com/ShotaroYoshizawa/profile.diy/a341dc059db5a26075f94cca17a8726ae55d2c03/glb/bed2.glb');
 });
 
 function initCanvasWithModel(canvasSelector, modelUrl) {
@@ -42,7 +42,7 @@ function initCanvasWithModel(canvasSelector, modelUrl) {
   const fovRad = (fov / 2) * (Math.PI / 180); // 視野角をラジアンに変換
   let distance = (window.innerHeight / 2) / Math.tan(fovRad); // カメラ距離を求める
   const camera = new THREE.PerspectiveCamera(fov, window.innerWidth / window.innerHeight, 0.1, 1000);
-  camera.position.set(4, 2, distance / 10000 * 8);
+  camera.position.set(6, 3, distance / 10000 * 4);
   camera.lookAt(scene.position);
 
   // コントロールを作成
