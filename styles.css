@@ -55,7 +55,8 @@ nav {
 }
 
 .menu-btn:hover {
-    background-color: rgba(50, 50, 50, 0.9); /* ホバー時の背景色 */
+    background-color: rgba(50, 50, 50, 0.9);
+    /* ホバー時の背景色 */
 }
 
 .menu-btn__burger,
@@ -116,7 +117,7 @@ nav {
     z-index: 999;
 }
 
-.nav-menu li{
+.nav-menu li {
     list-style: none;
 }
 
@@ -128,9 +129,9 @@ nav {
     padding: 5px 5px;
     margin: 5px 0;
     position: relative;
-    
+
     color: white;
-    
+
     font-size: 18px;
 }
 
@@ -175,25 +176,38 @@ nav {
 
 /* トップに戻るボタンのスタイル↓ */
 #scrollTopButton {
-    display: none; /* 最初は非表示 */
-    position: fixed; /* ページの位置に固定 */
-    bottom: 75px; /* ハンバーガーメニューの上に配置 */
-    right: 20px; /* 右から20px */
-    z-index: 999; /* ハンバーガーメニューの下に表示 */
-    width: 45px; /* ハンバーガーメニューと同じ大きさ */
-    height: 45px; /* ハンバーガーメニューと同じ大きさ */
-    background-color: rgba(50, 50, 50, 0.7); /* 背景色 */
-    border: none; /* 枠線なし */
-    outline: none; /* アウトラインなし */
-    cursor: pointer; /* カーソルの形状 */
-    border-radius: 5px; /* 角を丸く */
+    display: none;
+    /* 最初は非表示 */
+    position: fixed;
+    /* ページの位置に固定 */
+    bottom: 75px;
+    /* ハンバーガーメニューの上に配置 */
+    right: 20px;
+    /* 右から20px */
+    z-index: 999;
+    /* ハンバーガーメニューの下に表示 */
+    width: 45px;
+    /* ハンバーガーメニューと同じ大きさ */
+    height: 45px;
+    /* ハンバーガーメニューと同じ大きさ */
+    background-color: rgba(50, 50, 50, 0.7);
+    /* 背景色 */
+    border: none;
+    /* 枠線なし */
+    outline: none;
+    /* アウトラインなし */
+    cursor: pointer;
+    /* カーソルの形状 */
+    border-radius: 5px;
+    /* 角を丸く */
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
 #scrollTopButton:hover {
-    background-color: rgba(50, 50, 50, 0.9); /* ホバー時の背景色 */
+    background-color: rgba(50, 50, 50, 0.9);
+    /* ホバー時の背景色 */
 }
 
 /* 上向きのくの字 */
@@ -205,6 +219,7 @@ nav {
     transform: rotate(135deg);
     margin-top: 10px;
 }
+
 /* トップに戻るボタンのスタイル↑ */
 
 /*load用↓*/
@@ -272,6 +287,11 @@ section {
     z-index: -10;
 }
 
+.section {
+    padding: 0;
+    margin: 0;
+}
+
 .type0 {
     position: fixed;
     z-index: -11;
@@ -304,7 +324,7 @@ section {
     bottom: 0%;
     left: 50%;
     transform: translate(-50%, 0%);
-    padding: 0 0 20px 0;
+    padding: 0 0 40px 0;
 }
 
 .top-sub p {
@@ -378,6 +398,13 @@ section {
 
 .Introduction p {
     margin: 10px;
+}
+
+.Home-back {
+    padding: 20px 0;
+    margin: 20px 0;
+    background-color: rgba(230, 230, 230, 0.9);
+    border-radius: 20px;
 }
 
 .Intro-back {
@@ -758,7 +785,6 @@ ul.listCover {
     background: #cdcdcd;
 }
 
-
 .listItem div {
     display: none;
 }
@@ -863,13 +889,16 @@ button {
     border: none;
     cursor: pointer;
     padding: 0;
-    height: 30px; /* 任意の高さ */
-    width: 30px; /* 任意の幅 */
+    height: 30px;
+    /* 任意の高さ */
+    width: 30px;
+    /* 任意の幅 */
     display: flex;
     align-items: center;
     justify-content: center;
     font-size: 1.5em;
-    border-radius: 50%; /* ボタンを丸くする */
+    border-radius: 50%;
+    /* ボタンを丸くする */
     outline: none;
     transition: background-color 0.3s;
 }
@@ -887,6 +916,7 @@ button:hover {
     position: absolute;
     right: 10px;
 }
+
 /*↑otherモデル*/
 
 .other-content h4 {
@@ -989,49 +1019,33 @@ footer nav ul li a {
 
 
 /* test↓ */
-.section{
-    padding: 0;
-    margin: 0;
-}
-
-#section0{
-    background-color: rgba(255, 0, 255, 0.5);
-    z-index: 1;
-}
-
-#section1{
+#section1-test {
     background-color: rgba(255, 0, 0, 0.5);
     z-index: 1;
+    min-height: 200vh;
 }
 
-#section2{
+#section2-test {
     background-color: rgba(255, 255, 0, 0.5);
     z-index: 1;
+    min-height: 200vh;
 }
 
-#section3{
+#section3-test {
     background-color: rgba(0, 255, 255, 0.5);
     z-index: 1;
+    min-height: 200vh;
 }
 
-#section4{
+#section4-test {
     background-color: rgba(0, 255, 0, 0.5);
     z-index: 1;
-}
-
-#section5{
-    background-color: rgba(0, 0, 255, 0.5);
-    z-index: 1;
+    min-height: 200vh;
 }
 
 /* test↑ */
 
 /* new↓ */
-.Home-back {
-    padding: 20px 0;
-    margin: 20px 0;
-    background-color: rgba(230, 230, 230, 0.9);
-    border-radius: 20px;
-}
+
 
 /* new↑ */
