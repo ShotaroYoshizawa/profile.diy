@@ -1,32 +1,29 @@
-<!DOCTYPE html>
-<html lang="ja">
-
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Home - Shotaro Yoshizawa</title>
-  <link rel="stylesheet" href="styles.css">
-  <!-- three.jsを読み込む -->
-  <script src="https://unpkg.com/three@0.147.0/build/three.min.js"></script>
-  <script src="https://unpkg.com/three@0.147.0/examples/js/controls/OrbitControls.js"></script>
-  <script src="https://unpkg.com/three@0.142.0/examples/js/loaders/GLTFLoader.js"></script>
-  <script src="https://unpkg.com/gsap@3.9.1/dist/gsap.min.js"></script>
-</head>
-
 <body>
-
-  <section id="home">
-    <div class="container">
+  <!DOCTYPE html>
+  <html lang="ja">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home - Shotaro Yoshizawa</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/GLTFLoader.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tween.js/18.6.4/Tween.min.js"></script>
+  </head>
+  <body>
+    <section id="home">
       <div class="Canvas type1">
         <canvas id="myCanvas1"></canvas>
       </div>
       <div class="container">
-        <button id="hidePartsButton">Hide Parts</button>
+        <div class="section" id="section1-test">Section 1</div>
+        <div class="section" id="section2-test">Section 2</div>
+        <div class="section" id="section3-test">Section 3</div>
+        <div class="section" id="section4-test">Section 4</div>
       </div>
-    </div>
-  </section>
-
-  <script src="js/index-test-parts.js"></script>
-</body>
-
-</html>
+    </section>
+    <script src="js/index-test-parts.js"></script>
+  </body>
+  </html>
+  

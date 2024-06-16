@@ -1,5 +1,4 @@
 window.addEventListener("DOMContentLoaded", () => {
-    // セクションごとに表示するモデルの情報
     const modelUrls = [
       {
         url: 'https://rawcdn.githack.com/ShotaroYoshizawa/profile.diy/a341dc059db5a26075f94cca17a8726ae55d2c03/glb/bed.glb',
@@ -27,7 +26,6 @@ window.addEventListener("DOMContentLoaded", () => {
       }
     ];
   
-    // 常に表示する追加モデルの情報
     const additionalModels = [
       {
         url: 'https://rawcdn.githack.com/ShotaroYoshizawa/profile.diy/6cc27c376f68a1a78d6f835c0544a7653f77293f/glb/table1.glb',
@@ -59,63 +57,54 @@ window.addEventListener("DOMContentLoaded", () => {
       }
     ];
   
-    let currentModelIndex = 0; // 現在表示しているモデルのインデックス
-    let currentModel = null;   // 現在表示しているモデル
+    let currentModelIndex = 0;
+    let currentModel = null;
     let scene, camera, renderer, controls;
   
+    // シーンの初期化
     function initScene() {
-      // レンダラーを作成
       const canvasElement = document.querySelector('#myCanvas1');
       renderer = new THREE.WebGLRenderer({
         antialias: true,
         canvas: canvasElement,
-        alpha: true, // 透過を有効化
+        alpha: true,
       });
       renderer.physicallyCorrectLights = true;
       renderer.outputEncoding = THREE.sRGBEncoding;
-  
-      // サイズ指定
       renderer.setPixelRatio(window.devicePixelRatio);
       renderer.setSize(window.innerWidth, window.innerHeight);
   
-      // シーンを作成
       scene = new THREE.Scene();
-      renderer.setClearColor(0x000000, 0); // 背景色のアルファ値を透過指定
+      renderer.setClearColor(0x000000, 0);
   
-      // 環境光源を作成
       const ambientLight = new THREE.AmbientLight(0xffffff, 1.0);
       ambientLight.intensity = 2;
       scene.add(ambientLight);
   
-      // 平行光源を作成
       const directionalLight = new THREE.DirectionalLight(0xffffff, 1.0);
       directionalLight.intensity = 3;
-      directionalLight.position.set(0, 4, 8); // x, y, z の位置を指定
+      directionalLight.position.set(0, 4, 8);
       scene.add(directionalLight);
   
-      // カメラを作成
       const fov = 45;
       camera = new THREE.PerspectiveCamera(fov, window.innerWidth / window.innerHeight, 0.1, 1000);
       camera.position.set(0, 2, 4);
   
-      // コントロールを作成
       controls = new THREE.OrbitControls(camera, renderer.domElement);
   
-      // 追加モデルの読み込み
+      // 追加モデルをロード
       additionalModels.forEach(model => {
         loadAdditionalModel(model);
       });
   
-      // スクロールイベントの追加
+      // スクロールイベントを設定
       window.addEventListener('scroll', onScroll);
-      // 初期モデルの読み込み
       loadModel(modelUrls[currentModelIndex]);
     }
   
-    // モデルを読み込み表示する関数
+    // モデルをロード
     function loadModel(modelData) {
       const loader = new THREE.GLTFLoader();
-      // 現在のモデルをシーンから削除
       if (currentModel) {
         scene.remove(currentModel);
       }
@@ -135,14 +124,13 @@ window.addEventListener("DOMContentLoaded", () => {
       );
     }
   
-    // 追加モデルを読み込み表示する関数
+    // 追加モデルをロード
     function loadAdditionalModel(modelData) {
       const loader = new THREE.GLTFLoader();
       loader.load(
         modelData.url,
         function (glb) {
           const model = glb.scene;
-          // モデルの色と透明度を設定
           model.traverse(function (child) {
             if (child.isMesh) {
               child.material = new THREE.MeshBasicMaterial({
@@ -164,12 +152,11 @@ window.addEventListener("DOMContentLoaded", () => {
       );
     }
   
-    // スクロールイベントに基づいてモデルを切り替え、回転させる関数
+    // スクロールイベントハンドラ
     function onScroll() {
       const sections = document.querySelectorAll('.section');
       const scrollTop = window.scrollY;
   
-      // 各セクションの位置と高さを取得し、表示するモデルを切り替える
       sections.forEach((section, index) => {
         const sectionTop = section.offsetTop;
         const sectionHeight = section.offsetHeight;
@@ -182,20 +169,26 @@ window.addEventListener("DOMContentLoaded", () => {
         }
       });
   
-      // モデルを回転させる
+      if (scrollTop === 0 && currentModelIndex !== 0) {
+        currentModelIndex = 0;
+        loadModel(modelUrls[currentModelIndex]);
+      }
+  
+      // 現在のモデルを回転
       if (currentModel) {
-        currentModel.rotation.y = scrollTop * 0.001;
+        currentModel.rotation.y += 0.01; // 回転速度を調整
       }
     }
   
-    // アニメーションループを作成して、レンダリングとコントロールの更新を行う関数
+    
+  
+    // アニメーションの実行
     function animate() {
       requestAnimationFrame(animate);
       controls.update();
       renderer.render(scene, camera);
     }
   
-    // シーンの初期化とアニメーションの開始
     initScene();
     animate();
   });
