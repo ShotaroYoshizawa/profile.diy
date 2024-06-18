@@ -25,14 +25,14 @@ const models = [
         url: 'https://rawcdn.githack.com/ShotaroYoshizawa/profile.diy/a341dc059db5a26075f94cca17a8726ae55d2c03/glb/bed4.glb',
         position: { x: -1.5, y: 1, z: -1 },
         rotation: { x: 0, y: 90, z: 0 },
-        cameraOffset: { x: -2, y: 2, z: -3 }
+        cameraOffset: { x: -0, y: 2, z: -4 }
     },
     {
         id: 'section4',
         url: 'https://rawcdn.githack.com/ShotaroYoshizawa/profile.diy/a341dc059db5a26075f94cca17a8726ae55d2c03/glb/bed.glb',
         position: { x: 1.5, y: 1, z: -1 },
         rotation: { x: 0, y: 0, z: 0 },
-        cameraOffset: { x: 2, y: 2, z: -3 }
+        cameraOffset: { x: 0, y: 2, z: -4 }
     },
     {
         id: 'section5',
@@ -47,6 +47,7 @@ let scene, camera, renderer, controls, currentModels = [];
 let activeModelIndex = -1;
 let rotationRequestId;
 let cameraTween;
+const originalMaterials = []; // オリジナルのマテリアル情報を保存する配列
 
 // 初期化関数
 function init() {
@@ -119,6 +120,15 @@ function loadModels() {
                     THREE.MathUtils.degToRad(modelData.rotation.z)
                 );
 
+                // オリジナルのマテリアル情報を保存
+                const originalMaterial = {};
+                model.traverse((child) => {
+                    if (child.isMesh) {
+                        originalMaterial[child.uuid] = child.material.clone();
+                    }
+                });
+                originalMaterials[index] = originalMaterial;
+
                 scene.add(model);
                 currentModels[index] = model;  // 正しいインデックスでモデルを保存
             },
@@ -134,12 +144,16 @@ function onScroll() {
     const sections = document.querySelectorAll('.section');
     const scrollTop = window.scrollY;
 
-    sections.forEach((section, index) => {
+    sections.forEach((section) => {
         const sectionTop = section.offsetTop;
         const sectionHeight = section.offsetHeight;
 
         if (scrollTop >= sectionTop && scrollTop < sectionTop + sectionHeight) {
-            switchCameraAndRotateModel(index);
+            const sectionId = section.id; // セクションのIDを取得
+            const modelIndex = models.findIndex(model => model.id === sectionId); // セクションのIDとmodelsのIDを比較
+            if (modelIndex !== -1) {
+                switchCameraAndRotateModel(modelIndex);
+            }
         }
     });
 }
@@ -149,6 +163,15 @@ function switchCameraAndRotateModel(index) {
 
     // 前のモデルの回転を停止
     cancelAnimationFrame(rotationRequestId);
+
+    // すべてのモデルのマテリアルをリセットし、セクション対象外のモデルを半透明にする
+    currentModels.forEach((model, i) => {
+        if (i === index) {
+            resetModelMaterial(model, i); // オリジナルのマテリアルにリセット
+        } else {
+            setModelMaterial(model); // 半透明のグレーに設定
+        }
+    });
 
     activeModelIndex = index;
 
@@ -201,58 +224,28 @@ function startModelRotation(index) {
     animateRotation();
 }
 
+function setModelMaterial(model) {
+    model.traverse((child) => {
+        if (child.isMesh) {
+            child.material = new THREE.MeshBasicMaterial({
+                color: 0x808080,
+                transparent: true,
+                opacity: 0.5,
+            });
+        }
+    });
+}
+
+function resetModelMaterial(model, index) {
+    model.traverse((child) => {
+        if (child.isMesh && originalMaterials[index][child.uuid]) {
+            child.material = originalMaterials[index][child.uuid].clone();
+        }
+    });
+}
+
 // 初期化関数を実行
 init();
-
-
-//グリッド背景
-window.addEventListener("DOMContentLoaded", () => {
-    initGridCanvas('#myCanvas0'); //グリッド背景
-});
-
-function initGridCanvas(canvasSelector) {
-    // レンダラーを作成
-    const canvasElement = document.querySelector(canvasSelector);
-    const renderer = new THREE.WebGLRenderer({
-        antialias: true,
-        canvas: canvasElement,
-        alpha: true, // 透過を有効化
-    });
-
-    // サイズ指定
-    function resizeRenderer() {
-        const width = window.innerWidth;
-        const height = window.innerHeight;
-        renderer.setSize(width, height);
-        camera.aspect = width / height;
-        camera.updateProjectionMatrix();
-    }
-
-    // シーンを作成
-    const scene = new THREE.Scene();
-    renderer.setClearColor(0x000000, 0);
-
-    // カメラを作成
-    const camera = new THREE.PerspectiveCamera(30, window.innerWidth / window.innerHeight, 0.1, 1000);
-    camera.position.set(40, 30, 40);
-    camera.lookAt(0, 0, 0);
-
-    //グリッド背景
-    const gridHelper = new THREE.GridHelper(200, 40, 0xdcdcdc, 0xdcdcdc);
-    scene.add(gridHelper);
-
-    function animate() {
-        requestAnimationFrame(animate);
-        renderer.render(scene, camera);
-    }
-
-    window.addEventListener('resize', () => {
-        resizeRenderer();
-    });
-
-    resizeRenderer();
-    animate();
-}
 
 
 // ボタンの表示を制御する関数
