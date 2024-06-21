@@ -2,6 +2,12 @@ window.addEventListener("DOMContentLoaded", () => {
   // セクションごとに切り替えるモデル
   const modelUrls = [
     {
+      url: 'https://rawcdn.githack.com/ShotaroYoshizawa/profile.diy/d6b142285eb354422b035b373a951065983810f4/glb/bed5.1.glb',
+      sectionClass: 'section0',
+      position: { x: 0, y: 0, z: 0 },
+      rotation: { x: 0, y: 45, z: 0 }
+    },
+    {
       url: 'https://rawcdn.githack.com/ShotaroYoshizawa/profile.diy/cb0e9e06179648a51c9922f5df310fb4c6552a60/glb/bed3.1.glb',
       sectionClass: 'section1',
       position: { x: 0, y: 0, z: 0 },
@@ -99,7 +105,7 @@ window.addEventListener("DOMContentLoaded", () => {
     camera.position.set(0, 2, 4);
 
     // グリッド背景
-    const gridHelper = new THREE.GridHelper(50, 40, 0xdcdcdc, 0xdcdcdc);
+    const gridHelper = new THREE.GridHelper(50, 80, 0xdcdcdc, 0xdcdcdc);
     gridHelper.position.y = -1;
     scene.add(gridHelper);
 

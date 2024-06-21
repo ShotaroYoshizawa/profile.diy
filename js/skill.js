@@ -3,18 +3,24 @@ window.addEventListener("DOMContentLoaded", () => {
   const modelUrls = [
     {
       url: 'https://rawcdn.githack.com/ShotaroYoshizawa/profile.diy/d817fa1db4b6b210bd5c06abb4c6e936a8e91736/glb/table4.1.glb',
-      sectionClass: 'section1',
+      sectionClass: 'section0',
       position: { x: 0, y: 0, z: 0 },
-      rotation: { x: 0, y: -45, z: 0 }
+      rotation: { x: 0, y: 45, z: 0 }
     },
     {
-      url: 'https://rawcdn.githack.com/ShotaroYoshizawa/profile.diy/6cc27c376f68a1a78d6f835c0544a7653f77293f/glb/table1.glb',
+      url: 'https://rawcdn.githack.com/ShotaroYoshizawa/profile.diy/d817fa1db4b6b210bd5c06abb4c6e936a8e91736/glb/table4.1.glb',
+      sectionClass: 'section1',
+      position: { x: 0, y: 0, z: 0 },
+      rotation: { x: 0, y: 45, z: 0 }
+    },
+    {
+      url: 'https://rawcdn.githack.com/ShotaroYoshizawa/profile.diy/6cc27c376f68a1a78d6f835c0544a7653f77293f/glb/table2.glb',
       sectionClass: 'section2',
       position: { x: 0, y: 0, z: 0 },
       rotation: { x: 0, y: -45, z: 0 }
     },
     {
-      url: 'https://rawcdn.githack.com/ShotaroYoshizawa/profile.diy/6cc27c376f68a1a78d6f835c0544a7653f77293f/glb/table2.glb',
+      url: 'https://rawcdn.githack.com/ShotaroYoshizawa/profile.diy/6cc27c376f68a1a78d6f835c0544a7653f77293f/glb/table1.glb',
       sectionClass: 'section3',
       position: { x: 0, y: 0, z: 0 },
       rotation: { x: 0, y: -45, z: 0 }
@@ -93,7 +99,7 @@ window.addEventListener("DOMContentLoaded", () => {
     camera.position.set(0, 1.5, 3);
 
     // グリッド背景
-    const gridHelper = new THREE.GridHelper(50, 40, 0xdcdcdc, 0xdcdcdc);
+    const gridHelper = new THREE.GridHelper(50, 80, 0xdcdcdc, 0xdcdcdc);
     gridHelper.position.y = -1;
     scene.add(gridHelper);
 

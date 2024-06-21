@@ -82,7 +82,7 @@ function init() {
     camera.position.set(0, 3, 10);
 
     //グリッド背景
-    const gridHelper = new THREE.GridHelper(50, 40, 0xdcdcdc, 0xdcdcdc);
+    const gridHelper = new THREE.GridHelper(50, 80, 0xdcdcdc, 0xdcdcdc);
     scene.add(gridHelper);
 
     // コントロールを作成
