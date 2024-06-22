@@ -37,26 +37,29 @@ window.addEventListener("DOMContentLoaded", () => {
   // 周りに表示するモデル
   const additionalModels = [
     {
-      url: 'https://rawcdn.githack.com/ShotaroYoshizawa/profile.diy/a341dc059db5a26075f94cca17a8726ae55d2c03/glb/bed4.glb',
-      position: { x: -3, y: 0, z: -1.5 },
-      rotation: { x: 0, y: 90, z: 0 },
-    },
-    {
       url: 'https://rawcdn.githack.com/ShotaroYoshizawa/profile.diy/a341dc059db5a26075f94cca17a8726ae55d2c03/glb/bed.glb',
-      position: { x: -3, y: 0, z: -4.5 },
+      position: { x: 0, y: 1, z: 5 },
       rotation: { x: 0, y: 0, z: 0 },
     },
     {
-      url: 'https://rawcdn.githack.com/ShotaroYoshizawa/profile.diy/a341dc059db5a26075f94cca17a8726ae55d2c03/glb/bed2.glb',
-      position: { x: 0, y: 0, z: -6 },
+      url: 'https://rawcdn.githack.com/ShotaroYoshizawa/profile.diy/4b0f1f42dd3cfe8d0c92526fa64bea879ba943c4/glb/chair.glb',
+      position: { x: -1.5, y: 1, z: -1 },
       rotation: { x: 0, y: 45, z: 0 },
     },
     {
       url: 'https://rawcdn.githack.com/ShotaroYoshizawa/profile.diy/a341dc059db5a26075f94cca17a8726ae55d2c03/glb/bed.glb',
-      position: { x: 3, y: 0, z: -3 },
+      position: { x: 1.5, y: 1, z: -1 },
       rotation: { x: 0, y: 0, z: 0 },
+    },
+    {
+      url: 'https://rawcdn.githack.com/ShotaroYoshizawa/profile.diy/a341dc059db5a26075f94cca17a8726ae55d2c03/glb/bed2.glb',
+      position: { x: 3, y: 1, z: 2 },
+      rotation: { x: 0, y: 45, z: 0 },
     }
   ];
+
+  // 座標と角度のオフセットを統一条件で指定
+  const positionOffset = { x: -3, y: 1, z: 2, rotationY: -90 };
 
   let currentModelIndex = 0; // 現在のモデルのインデックス
   let currentModel = null; // 現在のモデルオブジェクト
@@ -108,7 +111,7 @@ window.addEventListener("DOMContentLoaded", () => {
 
     // 追加モデルを読み込み
     additionalModels.forEach(model => {
-      loadAdditionalModel(model);
+      loadAdditionalModel(model, positionOffset);
     });
 
     // ページ読み込み時のスクロール位置をチェックして初期モデルを読み込み
@@ -140,6 +143,7 @@ window.addEventListener("DOMContentLoaded", () => {
         }
         currentModel = glb.scene;
         currentModel.scale.set(1, 1, 1);
+
         currentModel.position.set(modelData.position.x, modelData.position.y, modelData.position.z);
         currentModel.rotation.set(modelData.rotation.x, modelData.rotation.y, modelData.rotation.z);
         scene.add(currentModel);
@@ -189,7 +193,7 @@ window.addEventListener("DOMContentLoaded", () => {
   }
 
   // 追加モデルを読み込む
-  function loadAdditionalModel(modelData) {
+  function loadAdditionalModel(modelData, offset) {
     loader.load(
       modelData.url,
       function (glb) {
@@ -202,7 +206,22 @@ window.addEventListener("DOMContentLoaded", () => {
           }
         });
         additionalModel.scale.set(1, 1, 1);
-        additionalModel.position.set(modelData.position.x, modelData.position.y, modelData.position.z);
+
+        // オフセットを適用
+        const newPosition = {
+          x: modelData.position.x - offset.x,
+          y: modelData.position.y - offset.y,
+          z: modelData.position.z - offset.z
+        };
+
+        const angle = offset.rotationY * Math.PI / 180;
+        const rotatedPosition = {
+          x: newPosition.x * Math.cos(angle) - newPosition.z * Math.sin(angle),
+          y: newPosition.y,
+          z: newPosition.x * Math.sin(angle) + newPosition.z * Math.cos(angle)
+        };
+
+        additionalModel.position.set(rotatedPosition.x, rotatedPosition.y, rotatedPosition.z);
         additionalModel.rotation.set(modelData.rotation.x, modelData.rotation.y, modelData.rotation.z);
         scene.add(additionalModel);
       },
@@ -301,6 +320,7 @@ window.addEventListener("DOMContentLoaded", () => {
     }
   });
 });
+
 
 // lode用
 function load_effect() {

@@ -22,10 +22,10 @@ const models = [
     },
     {
         id: 'section3',
-        url: 'https://rawcdn.githack.com/ShotaroYoshizawa/profile.diy/a341dc059db5a26075f94cca17a8726ae55d2c03/glb/bed4.glb',
+        url: 'https://rawcdn.githack.com/ShotaroYoshizawa/profile.diy/4b0f1f42dd3cfe8d0c92526fa64bea879ba943c4/glb/chair.glb',
         position: { x: -1.5, y: 1, z: -1 },
-        rotation: { x: 0, y: 90, z: 0 },
-        cameraOffset: { x: -0, y: 2, z: -4 }
+        rotation: { x: 0, y: 45, z: 0 },
+        cameraOffset: { x: -0, y: 1, z: -1.5 }
     },
     {
         id: 'section4',
