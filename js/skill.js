@@ -8,7 +8,7 @@ window.addEventListener("DOMContentLoaded", () => {
       rotation: { x: 0, y: 45, z: 0 }
     },
     {
-      url: 'https://rawcdn.githack.com/ShotaroYoshizawa/profile.diy/d817fa1db4b6b210bd5c06abb4c6e936a8e91736/glb/table4.1.glb',
+      url: 'https://rawcdn.githack.com/ShotaroYoshizawa/profile.diy/1120beb761d964b5d429c74eb92fa67ec5b6d3e8/glb/table3.glb',
       sectionClass: 'section1',
       position: { x: 0, y: 0, z: 0 },
       rotation: { x: 0, y: 45, z: 0 }
