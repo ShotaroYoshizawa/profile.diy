@@ -14,7 +14,7 @@ window.addEventListener("DOMContentLoaded", () => {
       rotation: { x: 0, y: 45, z: 0 }
     },
     {
-      url: 'https://rawcdn.githack.com/ShotaroYoshizawa/profile.diy/1120beb761d964b5d429c74eb92fa67ec5b6d3e8/glb/chair.glb',
+      url: 'https://rawcdn.githack.com/ShotaroYoshizawa/profile.diy/f639f16afdd226006a2cce313d3663ccc84b381d/glb/chair2.glb',
       sectionClass: 'section2',
       position: { x: 0, y: 0, z: 0 },
       rotation: { x: 0, y: -45, z: 0 }
