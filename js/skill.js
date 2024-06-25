@@ -42,17 +42,17 @@ window.addEventListener("DOMContentLoaded", () => {
       rotation: { x: 0, y: 0, z: 0 },
     },
     {
-      url: 'https://rawcdn.githack.com/ShotaroYoshizawa/profile.diy/4b0f1f42dd3cfe8d0c92526fa64bea879ba943c4/glb/chair.glb',
+      url: 'https://rawcdn.githack.com/ShotaroYoshizawa/profile.diy/762ee016bc3edb00e3bb2902e1083b00822457d0/glb/step.glb',
       position: { x: -1.5, y: 1, z: -1 },
       rotation: { x: 0, y: 45, z: 0 },
     },
     {
-      url: 'https://rawcdn.githack.com/ShotaroYoshizawa/profile.diy/a341dc059db5a26075f94cca17a8726ae55d2c03/glb/bed.glb',
+      url: 'https://rawcdn.githack.com/ShotaroYoshizawa/profile.diy/d6b142285eb354422b035b373a951065983810f4/glb/bed5.1.glb',
       position: { x: 1.5, y: 1, z: -1 },
       rotation: { x: 0, y: 0, z: 0 },
     },
     {
-      url: 'https://rawcdn.githack.com/ShotaroYoshizawa/profile.diy/a341dc059db5a26075f94cca17a8726ae55d2c03/glb/bed2.glb',
+      url: 'https://rawcdn.githack.com/ShotaroYoshizawa/profile.diy/f639f16afdd226006a2cce313d3663ccc84b381d/glb/chair2.glb',
       position: { x: 3, y: 1, z: 2 },
       rotation: { x: 0, y: 45, z: 0 },
     }

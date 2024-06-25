@@ -3,71 +3,127 @@
 <html lang="ja">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact - Shotaro Yoshizawa</title>
-    <link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact - Shotaro Yoshizawa</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/GLTFLoader.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/tween.js/18.6.4/Tween.min.js"></script>
 </head>
 
 <body>
-    <header>
-        <div class="container">
-            <a href="index.html">
-                <h1>Portfolio - Shotaro Yoshizawa</h1>
-            </a>
+  <header></header>
+  <nav>
+    <input type="checkbox" id="menu-toggle">
+    <label for="menu-toggle" class="menu-btn">
+      <span class="menu-btn__burger"></span>
+    </label>
+    <ul class="nav-menu">
+      <a href="index.html">
+        <li class="nav-item">Home</li>
+      </a>
+      <a href="about.html">
+        <li class="nav-item">About</li>
+      </a>
+      <a href="skill.html">
+        <li class="nav-item">Skill</li>
+      </a>
+      <a href="portfolio.html">
+        <li class="nav-item">Portfolio</li>
+      </a>
+      <a href="other.html">
+        <li class="nav-item">Other</li>
+      </a>
+      <a href="contact.html">
+        <li class="nav-item">Contact</li>
+      </a>
+
+      <!-- submenuバージョン
+              <<li class="nav-item">
+                  <input type="checkbox" id="about-toggle">
+                  <label for="about-toggle" class="submenu-btn">About</label>
+                  <ul class="submenu">
+                      <li class="nav-subitem"><a href="about.html">自己紹介</a></li>
+                      <li class="nav-subitem"><a href="about.html#about2">経緯(建築)</a></li>
+                      <li class="nav-subitem"><a href="about.html#about3">経緯(IT)</a></li>
+                  </ul>
+              </li>
+              -->
+    </ul>
+    <button onclick="scrollToTop()" id="scrollTopButton" title="トップに戻る">
+      <div class="caret-up"></div>
+    </button>
+  </nav>
+
+  <section id="contact">
+    <div class="load-fade">
+      <div class="Canvas type1">
+        <canvas id="myCanvas1"></canvas>
+      </div>
+      <div class="container">
+        <div class="top-title">
+          <div class="Content-title">
+            <h3 id="Contact1">Contact</h3>
+            <h4>連絡先</h4>
+          </div>
         </div>
-    </header>
-    <nav>
-        <input type="checkbox" id="menu-toggle">
-        <label for="menu-toggle" class="menu-btn">
-            <span class="menu-btn__burger"></span>
-        </label>
-        <ul class="nav-menu">
-            <a href="index.html"><li class="nav-item">Home</li></a>
-            <a href="about.html"><li class="nav-item">About</li></a>
-            <a href="skill.html"><li class="nav-item">Skill</li></a>
-            <a href="portfolio.html"><li class="nav-item">Portfolio</li></a>
-            <a href="other.html"><li class="nav-item">Other</li></a>
-            <a href="contact.html"><li class="nav-item">Contact</li></a>
-
-            <!-- submenuバージョン
-            <<li class="nav-item">
-                <input type="checkbox" id="about-toggle">
-                <label for="about-toggle" class="submenu-btn">About</label>
-                <ul class="submenu">
-                    <li class="nav-subitem"><a href="about.html">自己紹介</a></li>
-                    <li class="nav-subitem"><a href="about.html#about2">経緯(建築)</a></li>
-                    <li class="nav-subitem"><a href="about.html#about3">経緯(IT)</a></li>
-                </ul>
-            </li>
-            -->
-        </ul>
-    </nav>
-
-    <section id="contact">
-        <div class="container">
-            <div class="sub-subject">
-                <div class="subject-title">
-                    <h3 id="Contact1">Contact</h3>
-                    <h4>連絡先</h4>
-                </div>
-                <p>ご連絡いただける場合は、以下の情報を使用してください。</p>
-                <ul>
+        <div class="section section0"></div>
+        <div class="section section1">
+          <div class="Introduction">
+            <div class="Intro-back">
+              <div class="scroll-up">
+                <div class="sub-content">
+                  <p>ご連絡いただける場合は、以下の情報を使用してください。</p>
+                  <ul>
                     <li>Email: 3e.sytr202@gmail.com</li>
                     <!-- ソーシャルメディアのリンクを追加 -->
-                </ul>
-                <a href="index-test.html">test</a>
-                <a href="index-old.html">old</a>
-                <a href="index-test-parts.html">part</a>
+                  </ul>
+                </div>
+              </div>
             </div>
+          </div>
         </div>
-    </section>
+        <div class="section section1">
+          <div class="blank"></div>
+          <div class="blank"></div>
+        </div>
 
-    <footer>
-        <div class="container">
-            <p>&copy; 2024 Shotaro Yoshizawa. All Rights Reserved.</p>
+        <div class="section section2">
+          <div class="Introduction">
+            <div class="Intro-back">
+              <div class="scroll-up">
+                <div class="Intro-title">
+                  <h4>椅子</h4>
+                  <img src="picture\diy\chair1.jpg" alt="chair1">
+                </div>
+                <div class="sub-content">
+                  <p>ローテーブルでもハイテーブルでも使える椅子が欲しくて作成しました</p>
+                  <p>学校の図工室にあった椅子をモチーフにしています</p>
+                  <p>2枚の木の板と黒い脚だけのシンプルな作りにしました</p>
+                  <p>黒い脚は金具に見えるように塗装しています</p>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
-    </footer>
+        <div class="section section2">
+          <div class="blank"></div>
+          <div class="blank"></div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">
+      <p>&copy; 2024 Shotaro Yoshizawa. All Rights Reserved.</p>
+    </div>
+  </footer>
+
+  <script src="js/contact.js"></script>
 </body>
 
 </html>

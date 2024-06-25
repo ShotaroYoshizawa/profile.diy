@@ -2,32 +2,20 @@ window.addEventListener("DOMContentLoaded", () => {
   // セクションごとに切り替えるモデル
   const modelUrls = [
     {
-      url: 'https://rawcdn.githack.com/ShotaroYoshizawa/profile.diy/d6b142285eb354422b035b373a951065983810f4/glb/bed5.1.glb',
+      url: 'https://rawcdn.githack.com/ShotaroYoshizawa/profile.diy/762ee016bc3edb00e3bb2902e1083b00822457d0/glb/chair4.glb',
       sectionClass: 'section0',
       position: { x: 0, y: 0, z: 0 },
       rotation: { x: 0, y: 45, z: 0 }
     },
     {
-      url: 'https://rawcdn.githack.com/ShotaroYoshizawa/profile.diy/cb0e9e06179648a51c9922f5df310fb4c6552a60/glb/bed3.1.glb',
+      url: 'https://rawcdn.githack.com/ShotaroYoshizawa/profile.diy/762ee016bc3edb00e3bb2902e1083b00822457d0/glb/chair3.glb',
       sectionClass: 'section1',
       position: { x: 0, y: 0, z: 0 },
-      rotation: { x: 0, y: -45, z: 0 }
+      rotation: { x: 0, y: 45, z: 0 }
     },
     {
-      url: 'https://rawcdn.githack.com/ShotaroYoshizawa/profile.diy/a341dc059db5a26075f94cca17a8726ae55d2c03/glb/bed4.glb',
+      url: 'https://rawcdn.githack.com/ShotaroYoshizawa/profile.diy/762ee016bc3edb00e3bb2902e1083b00822457d0/glb/chair2.glb',
       sectionClass: 'section2',
-      position: { x: 0, y: 0, z: 0 },
-      rotation: { x: 0, y: -45, z: 0 }
-    },
-    {
-      url: 'https://rawcdn.githack.com/ShotaroYoshizawa/profile.diy/a341dc059db5a26075f94cca17a8726ae55d2c03/glb/bed.glb',
-      sectionClass: 'section3',
-      position: { x: 0, y: 0, z: 0 },
-      rotation: { x: 0, y: -45, z: 0 }
-    },
-    {
-      url: 'https://rawcdn.githack.com/ShotaroYoshizawa/profile.diy/a341dc059db5a26075f94cca17a8726ae55d2c03/glb/bed2.glb',
-      sectionClass: 'section4',
       position: { x: 0, y: 0, z: 0 },
       rotation: { x: 0, y: -45, z: 0 }
     }
@@ -35,13 +23,18 @@ window.addEventListener("DOMContentLoaded", () => {
 
   // 初期に表示して非表示にするモデル
   const initialModel = {
-    url: 'https://rawcdn.githack.com/ShotaroYoshizawa/profile.diy/a341dc059db5a26075f94cca17a8726ae55d2c03/glb/bed.glb',
+    url: 'https://rawcdn.githack.com/ShotaroYoshizawa/profile.diy/762ee016bc3edb00e3bb2902e1083b00822457d0/glb/chair2.glb',
     position: { x: 0, y: 0, z: 0 },
     rotation: { x: 0, y: -45, z: 0 }
   };
 
   // 周りに表示するモデル
   const additionalModels = [
+    {
+      url: 'https://rawcdn.githack.com/ShotaroYoshizawa/profile.diy/a341dc059db5a26075f94cca17a8726ae55d2c03/glb/bed.glb',
+      position: { x: 0, y: 1, z: 5 },
+      rotation: { x: 0, y: 0, z: 0 },
+    },
     {
       url: 'https://rawcdn.githack.com/ShotaroYoshizawa/profile.diy/6cc27c376f68a1a78d6f835c0544a7653f77293f/glb/table1.glb',
       position: { x: -3, y: 1, z: 2 },
@@ -56,16 +49,11 @@ window.addEventListener("DOMContentLoaded", () => {
       url: 'https://rawcdn.githack.com/ShotaroYoshizawa/profile.diy/d6b142285eb354422b035b373a951065983810f4/glb/bed5.1.glb',
       position: { x: 1.5, y: 1, z: -1 },
       rotation: { x: 0, y: 0, z: 0 },
-    },
-    {
-      url: 'https://rawcdn.githack.com/ShotaroYoshizawa/profile.diy/f639f16afdd226006a2cce313d3663ccc84b381d/glb/chair2.glb',
-      position: { x: 3, y: 1, z: 2 },
-      rotation: { x: 0, y: 45, z: 0 },
     }
   ];
 
   // 座標と角度のオフセットを統一条件で指定
-  const positionOffset = { x: 0, y: 1, z: 5, rotationY: 0 };
+  const positionOffset = { x: 3, y: 1, z: 2, rotationY: 90 };
 
   let currentModelIndex = 0; // 現在のモデルのインデックス
   let currentModel = null; // 現在のモデルオブジェクト
@@ -105,7 +93,7 @@ window.addEventListener("DOMContentLoaded", () => {
     // カメラを作成
     const fov = 45;
     camera = new THREE.PerspectiveCamera(fov, window.innerWidth / window.innerHeight, 0.1, 1000);
-    camera.position.set(0, 2, 4);
+    camera.position.set(0, 1, 2);
 
     // グリッド背景
     const gridHelper = new THREE.GridHelper(50, 80, 0xdcdcdc, 0xdcdcdc);
@@ -130,7 +118,7 @@ window.addEventListener("DOMContentLoaded", () => {
   function loadInitialModel() {
     loadModel(initialModel, () => {
       setTimeout(() => {
-        hideModelParts(currentModel, 75, 4, () => {
+        hideModelParts(currentModel, 75, 1, () => {
           setTimeout(() => {
             loadModelSequentially(modelUrls[0]);
           }, 300);
@@ -149,6 +137,7 @@ window.addEventListener("DOMContentLoaded", () => {
         }
         currentModel = glb.scene;
         currentModel.scale.set(1, 1, 1);
+
         currentModel.position.set(modelData.position.x, modelData.position.y, modelData.position.z);
         currentModel.rotation.set(modelData.rotation.x, modelData.rotation.y, modelData.rotation.z);
         scene.add(currentModel);
@@ -188,7 +177,7 @@ window.addEventListener("DOMContentLoaded", () => {
           }
         });
 
-        showModelParts(currentModel, 50, 2);
+        showModelParts(currentModel, 100, 1);
       },
       undefined,
       function (error) {
@@ -326,7 +315,8 @@ window.addEventListener("DOMContentLoaded", () => {
   });
 });
 
-// lode用
+
+//lode用
 function load_effect() {
   var element = document.getElementsByClassName('load-fade');
   if (!element) return; // 要素がない場合は終了
@@ -337,7 +327,7 @@ function load_effect() {
 }
 setTimeout(load_effect, 600); // 600ミリ秒経過後に実行
 
-// scroll用
+//scroll用
 function scroll_effect() {
   var element = document.getElementsByClassName('scroll-up');
   if (!element) return;
@@ -355,6 +345,7 @@ function scroll_effect() {
 }
 window.addEventListener('scroll', scroll_effect); // スクロール時に実行
 
+
 // ボタンの表示を制御する関数
 window.onscroll = function () {
   var scrollTopButton = document.getElementById("scrollTopButton");
@@ -369,29 +360,3 @@ window.onscroll = function () {
 function scrollToTop() {
   window.scrollTo({ top: 0, behavior: 'smooth' });
 }
-
-
-
-//About　のスライド移行
-const img = [
-  "picture/tanbo/tanbo1.jpg",
-  "picture/tanbo/tanbo2.jpg",
-  "picture/tanbo/tanbo3.jpg",
-  "picture/tanbo/tanbo4.jpg",
-  "picture/tanbo/tanbo5.jpg",
-  "picture/tanbo/tanbo6.jpg"
-];
-
-let count = 0;
-const changePic = document.getElementById('changePic');
-
-function picChange() {
-  count = (count + 1) % img.length;
-  
-  // 画像のロード完了を待たずに切り替え
-  changePic.src = img[count];
-
-  setTimeout(picChange, 8000);
-}
-
-picChange();

@@ -2,25 +2,25 @@ window.addEventListener("DOMContentLoaded", () => {
   // セクションごとに切り替えるモデル
   const modelUrls = [
     {
-      url: 'https://rawcdn.githack.com/ShotaroYoshizawa/profile.diy/1120beb761d964b5d429c74eb92fa67ec5b6d3e8/glb/chair4.glb',
+      url: 'https://rawcdn.githack.com/ShotaroYoshizawa/profile.diy/762ee016bc3edb00e3bb2902e1083b00822457d0/glb/step4.glb',
       sectionClass: 'section0',
       position: { x: 0, y: 0, z: 0 },
       rotation: { x: 0, y: 45, z: 0 }
     },
     {
-      url: 'https://rawcdn.githack.com/ShotaroYoshizawa/profile.diy/1120beb761d964b5d429c74eb92fa67ec5b6d3e8/glb/chair3.glb',
+      url: 'https://rawcdn.githack.com/ShotaroYoshizawa/profile.diy/762ee016bc3edb00e3bb2902e1083b00822457d0/glb/step3.glb',
       sectionClass: 'section1',
       position: { x: 0, y: 0, z: 0 },
       rotation: { x: 0, y: 45, z: 0 }
     },
     {
-      url: 'https://rawcdn.githack.com/ShotaroYoshizawa/profile.diy/f639f16afdd226006a2cce313d3663ccc84b381d/glb/chair2.glb',
+      url: 'https://rawcdn.githack.com/ShotaroYoshizawa/profile.diy/762ee016bc3edb00e3bb2902e1083b00822457d0/glb/step2.glb',
       sectionClass: 'section2',
       position: { x: 0, y: 0, z: 0 },
       rotation: { x: 0, y: -45, z: 0 }
     },
     {
-      url: 'https://rawcdn.githack.com/ShotaroYoshizawa/profile.diy/1120beb761d964b5d429c74eb92fa67ec5b6d3e8/glb/chair.glb',
+      url: 'https://rawcdn.githack.com/ShotaroYoshizawa/profile.diy/762ee016bc3edb00e3bb2902e1083b00822457d0/glb/step.glb',
       sectionClass: 'section3',
       position: { x: 0, y: 0, z: 0 },
       rotation: { x: 0, y: 0, z: 0 }
@@ -29,7 +29,7 @@ window.addEventListener("DOMContentLoaded", () => {
 
   // 初期に表示して非表示にするモデル
   const initialModel = {
-    url: 'https://rawcdn.githack.com/ShotaroYoshizawa/profile.diy/1120beb761d964b5d429c74eb92fa67ec5b6d3e8/glb/chair.glb',
+    url: 'https://rawcdn.githack.com/ShotaroYoshizawa/profile.diy/762ee016bc3edb00e3bb2902e1083b00822457d0/glb/step.glb',
     position: { x: 0, y: 0, z: 0 },
     rotation: { x: 0, y: -45, z: 0 }
   };
@@ -47,12 +47,12 @@ window.addEventListener("DOMContentLoaded", () => {
       rotation: { x: 0, y: 0, z: 0 },
     },
     {
-      url: 'https://rawcdn.githack.com/ShotaroYoshizawa/profile.diy/a341dc059db5a26075f94cca17a8726ae55d2c03/glb/bed.glb',
+      url: 'https://rawcdn.githack.com/ShotaroYoshizawa/profile.diy/d6b142285eb354422b035b373a951065983810f4/glb/bed5.1.glb',
       position: { x: 1.5, y: 1, z: -1 },
       rotation: { x: 0, y: 0, z: 0 },
     },
     {
-      url: 'https://rawcdn.githack.com/ShotaroYoshizawa/profile.diy/a341dc059db5a26075f94cca17a8726ae55d2c03/glb/bed2.glb',
+      url: 'https://rawcdn.githack.com/ShotaroYoshizawa/profile.diy/f639f16afdd226006a2cce313d3663ccc84b381d/glb/chair2.glb',
       position: { x: 3, y: 1, z: 2 },
       rotation: { x: 0, y: 45, z: 0 },
     }
