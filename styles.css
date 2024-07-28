@@ -236,21 +236,43 @@ nav {
 
 /*load用↑*/
 
-/*scroll用↓*/
-.scroll-up {
+/* scroll用 ↓ */
+.scroll-hidden {
     opacity: 0;
     visibility: hidden;
-    transform: translateY(50px);
     transition: all 1s;
 }
 
-.scroll-up.is-show {
+.scroll-hidden.is-visible {
     opacity: 1;
     visibility: visible;
-    transform: translateY(0px);
 }
 
-/*scroll用↑*/
+.scroll-hidden.is-hidden-above-half {
+    opacity: 0;
+    visibility: hidden;
+}
+
+/* scroll用 ↑ */
+
+/* lordscroll用 ↓ */
+.load-scroll-hidden {
+    opacity: 0;
+    visibility: hidden;
+    transition: all 1s;
+}
+
+.load-scroll-hidden.is-visible {
+    opacity: 1;
+    visibility: visible;
+}
+
+.load-scroll-hidden.is-hidden-above-half {
+    opacity: 0;
+    visibility: hidden;
+}
+
+/* lordscroll用 ↑ */
 
 section {
     padding: 0px 0 50px 0;
@@ -276,7 +298,7 @@ section {
 }
 
 .Canvas {
-    position: sticky;
+    position: fixed;
     top: 0;
     overflow: hidden;
     display: flex;
@@ -317,6 +339,15 @@ section {
     font-size: 35px;
     margin: 0;
     color: #444444;
+}
+
+.fixed-title {
+    width: 100%;
+    position: fixed;
+    top: 0%;
+    left: 50%;
+    transform: translate(-50%, 0%);
+    padding-top: 20px;
 }
 
 .top-sub {
@@ -452,17 +483,17 @@ section {
     margin: 0;
 }
 
-.sub-content  h4{
+.sub-content h4 {
     padding: 15px 0 0 0;
     margin: 0;
 }
 
-.sub-content  p{
+.sub-content p {
     padding: 5px 0 0 10px;
     margin: 0;
 }
 
-.sub-content  img{
+.sub-content img {
     padding: 10px 0 0 0;
     margin: 0;
 }
@@ -608,7 +639,7 @@ section {
 
 .history {
     margin: 10px 0px;
-    padding: 0 ;
+    padding: 0;
     border-top: 1px solid gray;
     float: left;
 }
@@ -1069,33 +1100,49 @@ footer nav ul li a {
 /* スクロールバー↑ */
 
 
-/* test↓ */
-#section1-test {
-    background-color: rgba(255, 0, 0, 0.5);
-    z-index: 1;
-    min-height: 200vh;
+/* エリア限定フェードイン↓ */
+.spacer {
+    height: 120vh;
+    background-color: lightgray;
 }
 
-#section2-test {
-    background-color: rgba(255, 255, 0, 0.5);
-    z-index: 1;
+/* エリア限定フェードイン↑ */
+
+
+/* 固定されたdiv用 */
+.fixed-div {
+    position: fixed;
+    width: 100%;
+    height: 90%;
+    top: 1px;
+    /* 任意の位置に調整可能 */
+    left: 0px;
+    /* 任意の位置に調整可能 */
 }
 
-#section3-test {
-    background-color: rgba(0, 255, 255, 0.5);
-    z-index: 1;
-    min-height: 200vh;
+.fixed-back {
+    width: 80%;
+    height: 90%;
+    padding: 20px 0;
+    margin: 20px auto;
+    background-color: rgba(230, 230, 230, 0.9);
+    border-radius: 20px;
 }
 
-#section4-test {
-    background-color: rgba(0, 255, 0, 0.5);
-    z-index: 1;
-    min-height: 200vh;
+.overflow-back {
+    width: 100%;
+    height: 80%;
+    overflow-y: auto;
+    /*IE(Internet Explorer)・Microsoft Edgeへの対応*/
+    -ms-overflow-style: none;
+    /*Firefoxへの対応*/
+    scrollbar-width: none;
+
+    padding: 0;
+    margin: 20px auto;
 }
 
-/* test↑ */
-
-/* new↓ */
-
-
-/* new↑ */
+/*Google Chrome、Safariへの対応*/
+.overflow-back::-webkit-scrollbar {
+    display: none;
+}

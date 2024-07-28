@@ -1,33 +1,118 @@
 <!DOCTYPE html>
-<html lang="ja">
+<html lang="en">
 
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Home - Shotaro Yoshizawa</title>
+  <title>Intersection Observer Multiple Areas with HTML Elements</title>
   <link rel="stylesheet" href="styles.css">
-  <!-- three.jsを読み込む -->
-  <script src="https://unpkg.com/three@0.147.0/build/three.min.js"></script>
-  <script src="https://unpkg.com/three@0.147.0/examples/js/controls/OrbitControls.js"></script>
-  <script src="https://unpkg.com/three@0.142.0/examples/js/loaders/GLTFLoader.js"></script>
-  <script src="https://unpkg.com/gsap@3.9.1/dist/gsap.min.js"></script>
 </head>
 
 <body>
-
-  <section id="home">
-    <div class="container">
-      <div class="Canvas type1">
-        <canvas id="myCanvas1"></canvas>
-      </div>
-      <div class="container">
-        <div class="section" id="section1-test">Section 1</div>
-        <div class="section" id="section2-test">Section 2</div>
-        <div class="section" id="section3-test">Section 3</div>
-        <div class="section" id="section4-test">Section 4</div>
+  <div class="load-scroll-hidden">
+    <div class="fixed-title">
+      <div class="Content-title">
+        <h3>About</h3>
+        <h4>建築業界からIT業界に</h4>
       </div>
     </div>
-  </section>
+    <div class="blank"></div>
+  </div>
+
+  <div class="blank"></div>
+  <div class="blank50"></div>
+
+  <div class="scroll-hidden">
+    <div class="blank"></div>
+    <div class="fixed-div">
+
+      <div class="fixed-back">
+        <div class="Intro-title">
+          <h3 id="about1">Profile</h3>
+          <h4>自己紹介</h4>
+        </div>
+
+        <div class="overflow-back">
+          <div class="sub-content">
+            <h4>- 氏名 -</h4>
+            <p>吉澤彰太郎<br>
+              Shotaro Yoshizawa</p>
+            <h4>- 生年月日 -</h4>
+            <p>1994年2月2日</p>
+            <h4>- 現在地 -</h4>
+            <p>大阪府大阪市北区大淀南</p>
+            <h4>- 出身地 -</h4>
+            <p>栃木県宇都宮市</p>
+            <img id="changePic" src="picture\tanbo\tanbo1.jpg" alt="画像の切り替え">
+            <p>地元の風景（宇都宮市）</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <div class="blank"></div>
+  <div class="blank50"></div>
+
+  <div class="scroll-hidden">
+    <div class="blank"></div>
+    <div class="fixed-div">
+
+      <div class="fixed-back">
+        <div class="Intro-title">
+          <h3 id="about2">Architecture Career</h3>
+          <h4>建築関連の経歴</h4>
+        </div>
+
+        <div class="overflow-back">
+          <div class="sub-content">
+            <h4>- 学歴 -</h4>
+            <div class="subject">
+              <div class="history">
+                <dl>
+                  <dt class="date">2012/04~2016/03</dt>
+                  <dd>宇都宮大学 工学部建築学コース</dd>
+                </dl>
+                <dl>
+                  <dt class="date">2016/04~2018/03</dt>
+                  <dd>宇都宮大学大学院 工学研究科<br>
+                    地球環境デザイン学専攻</dd>
+                </dl>
+              </div>
+            </div>
+            <h4>- 職務経歴 -</h4>
+            <div class="subject">
+              <div class="history">
+                <dl>
+                  <dt class="date">2018/04~2022/01</dt>
+                  <dd>株式会社東畑建築事務所</dd>
+                </dl>
+                <dl>
+                  <dt class="date">2022/04~2022/10</dt>
+                  <dd>TAKシステムズ</dd>
+                </dl>
+                <dl>
+                  <dt class="date">2022/11~2023/05</dt>
+                  <dd>ダイダン株式会社</dd>
+                </dl>
+                <dl>
+                  <dt class="date">2023/06~</dt>
+                  <dd>積水アクアシステム株式会社</dd>
+                </dl>
+              </div>
+            </div>
+            <p>建築業界では主に空調衛生分野を中心に仕事をしていました。<br>
+              業務内容は図面作成や機器選定、施主や行政との打ち合わせなどです。</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <div class="blank"></div>
+  <div class="blank50"></div>
 
   <script src="js/index-test.js"></script>
 </body>

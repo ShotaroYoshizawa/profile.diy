@@ -258,6 +258,11 @@ window.onscroll = function () {
   }
 };
 
+// ページの一番上にスクロールする関数
+function scrollToTop() {
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
 //lode用
 function load_effect() {
   var element = document.getElementsByClassName('load-fade');
@@ -268,26 +273,84 @@ function load_effect() {
   }
 }
 setTimeout(load_effect, 600); // 600ミリ秒経過後に実行
+// ↑↑↑
 
-//scroll用
+// scroll用(表示非表示)
 function scroll_effect() {
-  var element = document.getElementsByClassName('scroll-up');
-  if (!element) return;
+  var elements = document.getElementsByClassName('scroll-hidden');
+  if (!elements) return;
 
   var scrollY = window.pageYOffset;
   var windowH = window.innerHeight;
-  var showTiming = 200; // 要素を表示するタイミング
-  for (var i = 0; i < element.length; i++) {
-    var elemClientRect = element[i].getBoundingClientRect();
-    var elemY = scrollY + elemClientRect.top;
-    if (scrollY > elemY - windowH + showTiming) {
-      element[i].classList.add('is-show');
+  var midPoint = scrollY + windowH / 2;
+
+  for (var i = 0; i < elements.length; i++) {
+    var elemClientRect = elements[i].getBoundingClientRect();
+    var elemTop = scrollY + elemClientRect.top;
+    var elemBottom = scrollY + elemClientRect.bottom;
+
+    // 要素のトップが画面の半分より上、またはボトムが画面の半分より下の場合
+    if (elemTop < midPoint && elemBottom > midPoint) {
+      elements[i].classList.add('is-visible');
+      elements[i].classList.remove('is-hidden-above-half');
+    } else {
+      elements[i].classList.remove('is-visible');
+      elements[i].classList.add('is-hidden-above-half');
     }
   }
 }
-window.addEventListener('scroll', scroll_effect); // スクロール時に実行
 
-// ページの一番上にスクロールする関数
-function scrollToTop() {
-  window.scrollTo({ top: 0, behavior: 'smooth' });
+window.addEventListener('scroll', scroll_effect); // スクロール時に実行
+// ↑↑↑
+
+// スクロール用(スクロール&ロード)
+function scrollEffect() {
+  var elements = document.getElementsByClassName('load-scroll-hidden');
+  if (!elements) return;
+
+  var scrollY = window.pageYOffset;
+  var windowH = window.innerHeight;
+  var midPoint = scrollY + windowH / 2;
+
+  for (var i = 0; i < elements.length; i++) {
+    var elemClientRect = elements[i].getBoundingClientRect();
+    var elemTop = scrollY + elemClientRect.top;
+    var elemBottom = scrollY + elemClientRect.bottom;
+
+    // 要素のトップが画面の半分より上、またはボトムが画面の半分より下の場合
+    if (elemTop < midPoint && elemBottom > midPoint) {
+      elements[i].classList.add('is-visible');
+      elements[i].classList.remove('is-hidden-above-half');
+    } else {
+      elements[i].classList.remove('is-visible');
+      elements[i].classList.add('is-hidden-above-half');
+    }
+  }
 }
+
+window.addEventListener('scroll', scrollEffect); // スクロール時に実行
+// ↑↑↑
+
+// ロード用(スクロール&ロード)
+function loadEffect() {
+  var elements = document.getElementsByClassName('load-scroll-hidden');
+  if (!elements) return; // 要素がない場合は終了
+
+  for (var i = 0; i < elements.length; i++) {
+    elements[i].classList.add('is-visible');
+  }
+}
+
+setTimeout(loadEffect, 600); // 600ミリ秒経過後に実行
+// ↑↑↑
+
+// 両方を組み合わせる
+function initEffects() {
+  loadEffect(); // ロード時に要素を表示
+  scrollEffect(); // スクロール時に要素の表示/非表示を切り替え
+}
+
+window.addEventListener('DOMContentLoaded', function() {
+  setTimeout(initEffects, 600); // 600ミリ秒経過後に初期化
+});
+// ↑↑↑
